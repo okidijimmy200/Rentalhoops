@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 600,
     margin: 'auto',
     padding: theme.spacing(3),
+    marginTop: theme.spacing(15)
     
   }),
   title: {
@@ -64,7 +65,7 @@ export default function Profile({ match }) {
     return function cleanup(){
       abortController.abort()
     }
-
+    // eslint-disable-next-line
   }, [match.params.userId])
 
   useEffect(() => {
@@ -74,6 +75,7 @@ export default function Profile({ match }) {
     listByLandlord({
       userId: jwt.user._id
     }, {t: jwt.token}, signal).then((data) => {
+      // eslint-disable-next-line
       if (data == '') {
         setIsUploaded(true)
       }
@@ -81,7 +83,8 @@ export default function Profile({ match }) {
     return function cleanup() {
       abortController.abort()
     }
-  }, [])
+    // eslint-disable-next-line
+  }, [jwt.user._id])
 
   
   if (isUploaded) {
@@ -97,6 +100,7 @@ export default function Profile({ match }) {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary={user.name} secondary={user.email}/> {
+          // eslint-disable-next-line
          auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
           (<ListItemSecondaryAction>
             <Link to={"/user/edit/" + user._id}>
@@ -137,6 +141,7 @@ export default function Profile({ match }) {
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email}/> {
+              // eslint-disable-next-line
              auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
               (<ListItemSecondaryAction>
                 <Link to={"/user/edit/" + user._id}>
@@ -178,6 +183,7 @@ export default function Profile({ match }) {
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email}/> {
+              // eslint-disable-next-line
              auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
               (<ListItemSecondaryAction>
                 <Link to={"/user/edit/" + user._id}>

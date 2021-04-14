@@ -68,7 +68,7 @@ export default function EditProfile({ match }) {
     return function cleanup(){
       abortController.abort()
     }
-
+// eslint-disable-next-line
   }, [match.params.userId])
 
   const clickSubmit = () => {
@@ -120,7 +120,7 @@ export default function EditProfile({ match }) {
                                 checked: classes.checked,
                                 bar: classes.bar,
                               }}
-                      checked={values.educator}
+                      checked={values.landlord}
                       onChange={handleCheck}
               />}
             label={values.landlord? 'Yes' : 'No'}

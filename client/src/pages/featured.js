@@ -138,14 +138,12 @@ const styles = theme => ({
     color: '#767676'
   },
   btn: {
-    width: 'auto',
     minWidth: '280px',
     color: '#fff',
     backgroundColor: '#BA265D',
     textAlign: 'center',
     width:' 100%',
     maxWidth: '325px',
-    padding: '18px 32px',
     whiteSpace: 'nowrap',
     borderRadius: '3px',
     padding: '16px 32px',
@@ -178,7 +176,7 @@ const Featured = withStyles(styles)(
           <CardMedia className={classes.media}  title="bgPic2" src={bgPic2}/>
           <Button component='div' className={classes.arrowLeft} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Previous" focusable="false" 
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
             style={{
               display: 'block ',
               fill: 'rgb(255, 255, 255)',
@@ -191,7 +189,7 @@ const Featured = withStyles(styles)(
           </Button>
           <Button className={classes.arrowRight} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Next" focusable="false" style={{
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
               display: 'block',
                fill:' rgb(255, 255, 255) ',
                height: '24px', 
@@ -233,7 +231,7 @@ const Featured = withStyles(styles)(
           <CardMedia className={classes.media}  title="bgPic2" src={bgPic2}/>
           <Button component='div' className={classes.arrowLeft} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Previous" focusable="false" 
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
             style={{
               display: 'block ',
               fill: 'rgb(255, 255, 255)',
@@ -246,7 +244,7 @@ const Featured = withStyles(styles)(
           </Button>
           <Button className={classes.arrowRight} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Next" focusable="false" style={{
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
               display: 'block',
                fill:' rgb(255, 255, 255) ',
                height: '24px', 
@@ -288,7 +286,7 @@ const Featured = withStyles(styles)(
           <CardMedia className={classes.media}  title="bgPic2" src={bgPic2}/>
           <Button component='div' className={classes.arrowLeft} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Previous" focusable="false" 
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
             style={{
               display: 'block ',
               fill: 'rgb(255, 255, 255)',
@@ -301,7 +299,7 @@ const Featured = withStyles(styles)(
           </Button>
           <Button className={classes.arrowRight} disableRipple>
             <div className={classes.arrowWrap}>
-            <svg viewBox="0 0 18 18" role="img" aria-label="Next" focusable="false" style={{
+            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
               display: 'block',
                fill:' rgb(255, 255, 255) ',
                height: '24px', 

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import chat from '../assets/images/chat.svg'
 import StarPic from '../assets/images/star.svg'
-import { Icon } from '@material-ui/core'
 import Card from '@material-ui/core/Card'
 import TickPic from '../assets/images/checked.svg'
 
@@ -111,18 +110,18 @@ export default function Testimonial(){
                 <div className={classes.testimonial}> 
                     <div className={classes.text}>
                         <div className={classes.customer}>
-                            <img src={chat} className={classes.chatBox}/>
+                            <img src={chat} className={classes.chatBox} alt='pic'/>
                             <div className={classes.title}>
                               <Typography component='h4' >
                                 Jimmy Jones O.
                               </Typography>
                             </div>
                             <div className={classes.starsOverview}>
-                                    <img src={StarPic} className={classes.iconStar}/>
-                                    <img src={StarPic} className={classes.iconStar}/>
-                                    <img src={StarPic} className={classes.iconStar}/>
-                                    <img src={StarPic} className={classes.iconStar}/>
-                                    <img src={StarPic} className={classes.iconStar}/>
+                                    <img src={StarPic} className={classes.iconStar} alt='pic'/>
+                                    <img src={StarPic} className={classes.iconStar} alt='pic'/>
+                                    <img src={StarPic} className={classes.iconStar} alt='pic'/>
+                                    <img src={StarPic} className={classes.iconStar} alt='pic'/>
+                                    <img src={StarPic} className={classes.iconStar} alt='pic'/>
                               </div>
                         </div>
                         <Typography component='h2' className={classes.title2}>
@@ -138,9 +137,9 @@ export default function Testimonial(){
                     <div className={classes.facts}>
                       {/* <div  style={{width: ''}}> */}
                       <Card  className={classes.factList}>
-                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg}/></span><span>Responsive</span></div>
-                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg}/></span><span>Knowledgeable</span></div>
-                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg}/></span><span>Honest</span></div>
+                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg} alt='pic'/></span><span>Responsive</span></div>
+                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg} alt='pic'/></span><span>Knowledgeable</span></div>
+                            <div className={classes.display}><span><img  src={TickPic} className={classes.tickImg} alt='pic'/></span><span>Honest</span></div>
                         </Card>
                       {/* </div> */}
                     </div>

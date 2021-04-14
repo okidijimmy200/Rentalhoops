@@ -50,7 +50,7 @@ const ObjectiveTabs = withStyles(styles)(
         <Item>
           <Paper className={classes.paper} component='div'>
               <div className={classes.iconPic}>
-                <img src={diamondPic} className={classes.iconMain}/>
+                <img src={diamondPic} className={classes.iconMain} alt='pic'/>
               </div>
               <div>
               <Typography variant='h6' className={classes.title}>
@@ -67,7 +67,7 @@ const ObjectiveTabs = withStyles(styles)(
         <Item>
           <Paper className={classes.paper} component='div'>
           <div className={classes.iconPic}>
-                <img src={nodetree} className={classes.iconMain}/>
+                <img src={nodetree} className={classes.iconMain} alt='pic'/>
               </div>
               <div>
               <Typography variant='h6' className={classes.title}>
@@ -84,7 +84,7 @@ const ObjectiveTabs = withStyles(styles)(
         <Item>
           <Paper className={classes.paper}  component='div'>
           <div className={classes.iconPic}>
-                <img src={fingerprint} className={classes.iconMain}/>
+                <img src={fingerprint} className={classes.iconMain} alt='pic'/>
               </div>
               <div>
               <Typography variant='h6' className={classes.title}>

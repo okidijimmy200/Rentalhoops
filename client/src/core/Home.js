@@ -98,7 +98,7 @@ export default function Home(){
             </div>
             <div className={classes.dots}>
             <div className={classes.dotsSub}>
-                   <img src={dotsPic} className={classes.dotsMain} />
+                   <img src={dotsPic} className={classes.dotsMain} alt='pic'/>
                 </div>
             </div>
         </Paper>

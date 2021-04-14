@@ -21,14 +21,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'ConduitMdITCTTMedium'
   },
   btn: {
-    width: 'auto',
     minWidth: '280px',
     color: '#fff',
     backgroundColor: '#BA265D',
     textAlign: 'center',
     width:' 100%',
     maxWidth: '325px',
-    padding: '18px 32px',
     whiteSpace: 'nowrap',
     borderRadius: '3px',
     padding: '16px 32px',

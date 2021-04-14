@@ -42,6 +42,7 @@ const useStyles = makeStyles({
 })
 
 const isActive = (history, path) => {
+  // eslint-disable-next-line
   if (history.location.pathname == path && history.location.pathname != '/signup')
     return {color: '#ff4081'}
   else
@@ -72,7 +73,7 @@ const Menu = ({history}) => {
           width: '2.5rem',
           height: '2.5rem',
           fill: '#BA265D',
-      }}/>
+      }} />
         <Typography variant="h6" color="inherit">
           RentalHoops
         </Typography>

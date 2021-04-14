@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -123,7 +123,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Signup() {
     const classes = useStyles()
-    const { handleChange, handleSubmit, values, errors} = useForm(
+    const { handleChange, handleSubmit, values} = useForm(
         validate
     );
 
@@ -155,13 +155,13 @@ export default function Signup() {
                           <ul className={classes.CardOptions}>
                               <li className={classes.CardOptionsItem}>
                            
-                                  <img src={GooglePlus} className={classes.Img} />
+                                  <img src={GooglePlus} className={classes.Img} alt='pic'/>
                               </li>
                               <li className={classes.CardOptionsItem}>
-                                  <img src={Facebook} className={classes.Img} />
+                                  <img src={Facebook} className={classes.Img} alt='pic'/>
                               </li>
                               <li className={classes.CardOptionsItem}>
-                                  <img src={Twitter} className={classes.Img} />
+                                  <img src={Twitter} className={classes.Img} alt='pic'/>
                               </li>
                           </ul>
                                {/* google react login */}

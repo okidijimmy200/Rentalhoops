@@ -10,7 +10,7 @@ import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import {create} from './api-property'
 import auth from './../auth/auth-helper'
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem'
 // import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
@@ -70,6 +70,7 @@ export default function NewProduct() {
   const jwt = auth.isAuthenticated()
 
   const handleChange = name => event => {
+    // eslint-disable-next-line
     const value = name === 'image'
       ? event.target.files[0]
       : event.target.value

@@ -7,11 +7,6 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
 import {Link} from 'react-router-dom'
 import auth from './../auth/auth-helper'
 import {Redirect} from 'react-router-dom'
@@ -188,13 +183,13 @@ export default function Login(props) {
                             <Typography className={classes.CardOptionsNote} component='small' >Or login in with</Typography>
                             <ul className={classes.CardOptions}>
                                 <li className={classes.CardOptionsItem}>
-                                    <img src={GooglePlus} className={classes.Img} />
+                                    <img src={GooglePlus} className={classes.Img} alt='pic'/>
                                 </li>
                                 <li className={classes.CardOptionsItem}>
-                                    <img src={Facebook} className={classes.Img} />
+                                    <img src={Facebook} className={classes.Img} alt='pic'/>
                                 </li>
                                 <li className={classes.CardOptionsItem}>
-                                    <img src={Twitter} className={classes.Img} />
+                                    <img src={Twitter} className={classes.Img} alt='pic'/>
                                 </li>
                             </ul>
                         </CardContent>
