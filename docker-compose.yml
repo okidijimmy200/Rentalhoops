@@ -1,0 +1,42 @@
+version: '3.9'
+
+services: 
+    rentalhoops-api:
+        restart: always
+        build: 
+            context: .
+            dockerfile: Dockerfile.server.dev
+        container_name: rentalhoops-nginx
+        volumes: 
+            - /home/app/node_modules
+            - .:/home/app
+        ports: 
+            - 8080:8080
+        depends_on: 
+            - mongodb
+        environment: 
+            NODE_ENV: ${NODE_ENV}
+            MONGO_URI: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb
+        networks: 
+            - rentalhoops-api
+
+    mongodb:
+        image: mongo
+        restart: always
+        ports: 
+            - 27018:27017
+        environment: 
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+        volumes: 
+            - mongodb-data:/data/db
+        networks: 
+            - rentalhoops-api
+
+networks:
+    rentalhoops-api:
+        driver: bridge
+    
+volumes:
+    mongodb-data:
+        driver: local
