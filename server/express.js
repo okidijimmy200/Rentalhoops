@@ -26,11 +26,7 @@ app.use(compress())
 // secure apps by setting various HTTP headers
 app.use(helmet())
 // enable CORS - Cross Origin Resource Sharing
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}))
+app.use(cors())
 
 
 // mount routes

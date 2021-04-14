@@ -10,8 +10,8 @@ services:
         volumes: 
             - /home/app/node_modules
             - .:/home/app
-        ports: 
-            - 8080:8080
+        # ports: 
+        #     - 8080:8080
         depends_on: 
             - mongodb
         environment: 
@@ -42,11 +42,24 @@ services:
         volumes: 
             - /home/app/node_modules
             - ./client:/home/app
-        ports: 
-            - 3000:3000
+        # ports: 
+        #     - 3000:3000
         depends_on: 
             - rentalhoops-api
         networks: 
+            - rentalhoops-api
+
+    nginx:
+        restart: always
+        depends_on:
+            - rentalhoops-api
+            - client
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile.nginx.dev
+        ports:
+            - 8080:80
+        networks:
             - rentalhoops-api
 
 networks:

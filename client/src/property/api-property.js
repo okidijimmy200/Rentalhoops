@@ -2,7 +2,7 @@
 
 const create = async (params, credentials, property) => {
     try {
-      let response = await fetch('http://localhost:8080/api/property/by/'+ params.userId, {
+      let response = await fetch('/api/property/by/'+ params.userId, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -19,7 +19,7 @@ const create = async (params, credentials, property) => {
   //API to list property by landlord
 const listByLandlord = async (params, credentials, signal) => {
   try {
-    let response = await fetch('http://localhost:8080/api/property/by/'+ params.userId, {
+    let response = await fetch('/api/property/by/'+ params.userId, {
       method: 'GET',
       signal: signal,
       headers: {
