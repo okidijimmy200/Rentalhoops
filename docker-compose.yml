@@ -32,6 +32,22 @@ services:
             - mongodb-data:/data/db
         networks: 
             - rentalhoops-api
+    
+    client:
+        restart: always
+        build: 
+            context: ./client
+            dockerfile: Dockerfile.client.dev
+        container_name: rentalhoops-client
+        volumes: 
+            - /home/app/node_modules
+            - ./client:/home/app
+        ports: 
+            - 3000:3000
+        depends_on: 
+            - rentalhoops-api
+        networks: 
+            - rentalhoops-api
 
 networks:
     rentalhoops-api:
