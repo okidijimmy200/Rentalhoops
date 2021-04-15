@@ -84,6 +84,8 @@ export default function NewProduct() {
     values.image && propertyData.append('image', values.image)
     values.bedRooms && propertyData.append('bedRooms', values.bedRooms)
     values.price && propertyData.append('price', values.price)
+    values.bathRooms && propertyData.append('bathRooms', values.bathRooms)
+    values.familyNumber && propertyData.append('familyNumber', values.familyNumber)
 
     create({
       userId: jwt.user._id
@@ -119,7 +121,7 @@ export default function NewProduct() {
                 <MenuItem value="Apartment">Apartment</MenuItem>
                 <MenuItem value="Bungalow">Bungalow</MenuItem>
                 <MenuItem value="villas">Villas</MenuItem>
-                <MenuItem value="Row houses">Row Houses</MenuItem>
+                <MenuItem value="RowHouses">Row Houses</MenuItem>
               </TextField><br/>
               
               {/* <GooglePlacesAutocomplete component="TextField"
@@ -139,8 +141,8 @@ export default function NewProduct() {
               </TextField><br/>
           <TextField id="familyNumber" label="Family Number" className={classes.textField} value={values.familyNumber} onChange={handleChange('familyNumber')} select margin="normal">
                 <MenuItem value="Single">Single</MenuItem>
-                <MenuItem value="Nuclear Family">Nuclear Family</MenuItem>
-                <MenuItem value="Big Family">Big Family</MenuItem>
+                <MenuItem value="Nuclear">Nuclear Family</MenuItem>
+                <MenuItem value="Big">Big Family</MenuItem>
               </TextField><br/>
           {/* <TextField id="price" label="Price" className={classes.textField} value={values.price} onChange={handleChange('price')} type="number" margin="normal"/><br/> */}
           <TextField id="price" label="Price" className={classes.textField} value={values.price} onChange={handleChange('price')} select margin="normal">

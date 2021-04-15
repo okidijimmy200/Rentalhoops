@@ -39,6 +39,9 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto',
     marginTop: theme.spacing(15)
   },
+  options: {
+    padding: '15px 16px'
+  }
 }))
 
 export default function Profile({ match }) {
@@ -143,7 +146,7 @@ export default function Profile({ match }) {
             <ListItemText primary={user.name} secondary={user.email}/> {
               // eslint-disable-next-line
              auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
-              (<ListItemSecondaryAction>
+              (<ListItemSecondaryAction >
                 <Link to={"/user/edit/" + user._id}>
                   <IconButton aria-label="Edit" color="primary">
                     <Edit/>
@@ -171,8 +174,8 @@ export default function Profile({ match }) {
             <LandlordProperty />
             </Grid>
             <Grid item xs={12} sm={3} md={3}>
-        <Paper className={classes.root} elevation={4}>
-        <Typography variant="h6" className={classes.title}>
+        <Paper className={classes.root} elevation={4} style={{marginTop: '26px'}}>
+        <Typography variant="h6" className={classes.title} style={{marginTop: '0'}}>
           Profile
         </Typography>
         <List dense>
@@ -182,10 +185,14 @@ export default function Profile({ match }) {
                 <Person/>
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={user.name} secondary={user.email}/> {
+            <ListItemText primary={user.name} secondary={user.email}/> 
+          </ListItem>
+          <Divider/>
+          <ListItem className={classes.options}>
+          {
               // eslint-disable-next-line
              auth.isAuthenticated().user && auth.isAuthenticated().user._id == user._id &&
-              (<ListItemSecondaryAction>
+              (<ListItemSecondaryAction style={{right: '75px'}}>
                 <Link to={"/user/edit/" + user._id}>
                   <IconButton aria-label="Edit" color="primary">
                     <Edit/>
@@ -195,7 +202,8 @@ export default function Profile({ match }) {
               </ListItemSecondaryAction>)
             }
           </ListItem>
-          <Divider/>
+          
+          <Divider />
           <ListItem>
             <ListItemText primary={"Joined: " + (
               new Date(user.created)).toDateString()}/>

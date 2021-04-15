@@ -29,7 +29,7 @@ const PropertySchema = new mongoose.Schema({
     },
     familyNumber: {
         type: String,
-        enum: ['Single', 'NuclearFamily', 'BigFamily']
+        enum: ['Single', 'Nuclear', 'Big']
     },
     owner:{
         type: mongoose.Schema.ObjectId, ref: 'User'

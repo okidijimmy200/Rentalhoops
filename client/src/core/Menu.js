@@ -78,11 +78,11 @@ const Menu = ({history}) => {
           RentalHoops
         </Typography>
       </MenuItem>
-      <Link to="/rent">
+      <Link to="/rent" style={{textDecoration: 'none'}}>
               <Button style={isActive(history, "/rent")} className={classes.about}>Rent
               </Button>
             </Link>
-      <Link to="/about">
+      <Link to="/about" style={{textDecoration: 'none'}}>
               <Button style={isActive(history, "/about")} className={classes.about}>How it Works
               </Button>
             </Link>
@@ -90,7 +90,7 @@ const Menu = ({history}) => {
       <div style={{'position': 'absolute', 'right': '10px'}}><span style={{'float': 'right'}}>
         {
           !auth.isAuthenticated() && (<span>
-            <Link to="/login">
+            <Link to="/login" style={{textDecoration: 'none'}}>
               <Button style={isActive(history, "/signup")} className={classes.capitalizeText} p={2}>Log in or Sign Up              </Button>
             </Link>
           </span>)
@@ -98,12 +98,12 @@ const Menu = ({history}) => {
         {
         auth.isAuthenticated() && (<span>
           {auth.isAuthenticated().user.landlord && 
-          (<Link to="/landlord/upload">
+          (<Link to="/landlord/upload" style={{textDecoration: 'none'}}>
               <Button style={isPartActive(history, "/landlord/upload")}>
                  Upload House
               </Button></Link>)
               }
-          <Link to={"/user/" + auth.isAuthenticated().user._id}>
+          <Link to={"/user/" + auth.isAuthenticated().user._id} style={{textDecoration: 'none'}}>
             <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>My Profile</Button>
           </Link>
           <Button color="inherit" onClick={() => {

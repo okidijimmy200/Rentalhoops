@@ -9,6 +9,7 @@ import Menu from './core/Menu'
 import Signup from './accounts/Signup'
 import Login from './accounts/Login'
 import NewProduct from './property/NewProperty'
+import RentalProperty from './property/RentalProperty'
 
 
 const MainRouter = () => {
@@ -16,6 +17,7 @@ const MainRouter = () => {
       <Menu/>
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route exact path="/rent" component={RentalProperty} />
         <Route path="/users" component={Users}/>
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
