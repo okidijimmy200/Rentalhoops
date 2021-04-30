@@ -6,6 +6,14 @@ import BgPic from './../assets/images/house.jpeg'
 import ListingBag from './../assets/images/add-to-listings-bag.svg'
 import Favourites from './../assets/images/favorite.svg'
 import { Link} from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import fakeMap from './../assets/images/fake-map2.jpg'
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -78,125 +86,148 @@ const useStyles = makeStyles(theme => ({
         fontSize: '14px',
         color: '#404040'
     },
-    cardWrap: {
-        height: '100%',
-        width: '30%',
-        position: 'relative',
-        display: 'block',
-        display: 'flex',
-        zIndex: '0',
-        textDecoration: 'none',
-        color: '#404040',
-        alignContent: 'center',
-        cursor: 'pointer',
-
+    cardMap: {
+        maxWidth: 600,
+        margin: 'auto',
     },
-    listingCard: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        padding: '10px 50px 10px 35px',
-        border: 'none',
-        borderTop: '1px solid #d8d8d8',
-        borderBottom: '1px solid #d8d8d8',
-        borderRight: '1px solid #d8d8d8',
-        background: '#fff'
+    mediaMap: {
+        width: '100%',
+        height: '81vh'
     },
-    thumbnail: {
-        width: '70px',
-        minWidth: '70px',
-        height: '70px',
-        margin: 'auto 0',
-        border: '1px solid #d8d8d8',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        position: 'static',
-        backgroundImage: `url(${BgPic})`
-    },
-    data: {
-        width: 'auto',
-        height: '100%',
-        padding: '0 24px 0 10px',
-        whiteSpace: 'inherit',
-        border: 'none',
-        position: 'relative',
-        justifyContent: 'center'
-    },
-    location: {
-        order: 1,
-        color: '#404040',
-        textAlign: 'left',
-        textTransform: 'uppercase'
-    },
-    listInfo: {
-        order:' 2',
-    },
-    listingStatus: {
-        order: '3',
+    paper: {
+        // padding: theme.spacing(2),
+        height: '355px',
+        width: '400px',
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
-        marginTop: '4px'
-    },
-    addToListingBag: {
-        backgroundColor: 'transparent',
-        position: 'absolute',
-        backgroundSize: '20px',
-        width: '32px !important'
-    },
-    lbAdd: {
-        backgroundImage: `url(${ListingBag})`,
-        backgroundColor: 'transparent',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '20px',
-        width: '32px',
-        height: '32px',
-        borderWidth: '0',
-        padding: '0 !important',
-        outline: 'none'
-    },
-    favorites: {
-        width: '40px',
-        height: '40px',
-        margin: 'auto',
+        border: 'none',
+        boxShadow: '0px 0px 0px 0px',
+        margin: 'auto'
+      },
+      card: {
+        height: '355px',
+        width: '100%',
+        margin: '0',
         padding: '0',
+        border: '1px solid #d8d8d8',
+        backgroundColor: '#fff',
+        backgroundRepeat: 'repeat',
         display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
-        justifyContent: 'center',
         cursor: 'pointer',
+        position: 'relative',
+        boxShadow: '0px 0px 0px 0px'
+      },
+      media:{
+        width:' 100%',
+        height: '70%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         position: 'absolute',
-        bottom: '0',
-        right: 0,
-        // backgroundImage: `url(${Favourites})`
-    },
-    Favourite: {
-        width: '17px',
-        height: '15px',
-        display: 'block'
-    },
-    selection: {
-        padding: '0 10px',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        left: 0,
-        width: '40px !important',
-        height: '40px',
+        top:' 0',
+        zIndex:' 0'
+      },
+      data: {
+        padding: '14px 15px 20px 10px',
+        fontFamily: 'ConduitMdITCTTMedium',
+        color:' #404040',
+        textAlign: 'left',
+        textTransform: 'uppercase',
+        whiteSpace: 'nowrap',
+        borderTop: '1px solid #d8d8d8',
+        backgroundColor: '#fff',
+      },
+      location: {
+        order: '1',
+        marginBottom: '5px'
+      },
+      neighbourhood: {
+        fontSize:' 20px',
+        lineHeight: '20px',
+        whiteSpace: 'normal',
+        color: '#404040'
+      },
+      Text: {
+        top: '231px',
+        height:' 30%',
+        width: '100%',
+        position: 'absolute'
+      },
+      arrowLeft: {
+        borderRadius: '3px',
+        padding: '16px 32px',
+        fontFamily: 'OpenSans-semibold',
+        fontSize: '18px',
+        border: 'none',
+        cursor: 'pointer',
+        height: '70%',
+        position: 'absolute',
+        left: '3px',
+        top: '2px'
+      },
+      arrowWrap: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         alignContent: 'center',
-        position: 'absolute'
-    },
-    listingCollection: {
-        display:'none',
-        fontSize: '16px',
-        cursor: 'pointer'
-    }
-    
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        right: '0',
+        left: '0',
+        top: '0',
+        bottom: '0'
+      },
+      arrowRight: {
+        borderRadius: '3px',
+        padding: '16px 32px',
+        fontFamily: 'OpenSans-semibold',
+        fontSize: '18px',
+        border: 'none',
+        cursor: 'pointer',
+        height: '70%',
+        position: 'absolute',
+        top: '2px',
+        right: '2px'
+      },
+      hood: {
+        fontSize: '14px',
+        lineHeight: '18px',
+        color: '#767676'
+      },
+      listInfo: {
+        order: '2',
+        fontSize: '0'
+      },
+      price: {
+        fontSize: '15px',
+        fontWeight: 'bold',
+        lineHeight: '20px',
+        color:' #404040',
+        display:'inline-block'
+      },
+      summary: {
+        fontSize: '14px',
+        lineHeight: '14px',
+        color: '#767676'
+      },
+    //   paper: {
+    //     // padding: theme.spacing(2),
+    //     height: '355px',
+    //     width: 'auto',
+    //     textAlign: 'center',
+    //     color: theme.palette.text.secondary,
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     border: 'none',
+    //     boxShadow: '0px 0px 0px 0px'
+    //   },
 }))
 
 export default function RentalProperty() {
@@ -234,45 +265,76 @@ export default function RentalProperty() {
                                 </ul>
                 </div>
                 <section>
-                    <Link className={classes.cardWrap}>
-                <div className={classes.listingCard} title="Kent Ave">  
-                  <div className={classes.thumbnail} >
-                      </div>    
-                  <div className={classes.data}> 
-                             <div className={classes.location}>        
-                                     <p class="address" >Kent Ave</p>      
-                                               <p class="neighborhood" >Williamsburg, Brooklyn</p>       
-                                                    </div>        
-                            <div className={classes.listInfo}>  
-                             <p class="price" >$5,096</p>        
-                                     <p class="summary"> <span >2 BD, </span>           
-                                              <span >2 BA, </span>        
-                                                          <span >0 SF, </span>       
-                                                                       <span >rental property</span>  </p> </div>
-                                <div className={classes.listingStatus}> </div>   
-                                </div></div>
-                                <div className={classes.addToListingBag}
-                                style={{
-                                    bottom: 0,
-                                    right: '28px',
-                                    cursor: 'pointer'
-                                }}
-                                >   
-                                 <button style={{cursor: 'pointer'}} className={classes.lbAdd}></button></div>
+                    <Grid container spacing={0}>
+                            <Grid item xs={12} sm={8} md={8} >
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px'}}>
+                                    <Paper className={classes.paper} component='div'>
+                            <Card className={classes.card}>
+                            <img className={classes.media}  alt="pic" src={fakeMap}/>
+                            <Button component='div' className={classes.arrowLeft} disableRipple>
+                            <div className={classes.arrowWrap}>
+                            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
+                            style={{
+                                display: 'block ',
+                                fill: 'rgb(255, 255, 255)',
+                                height: '24px',
+                                width: '24px'
+                                }}> 
+                                <path fillRule="evenodd" d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z">
+                                </path> </svg>
+                            </div>
+                            </Button>
+                            <Button className={classes.arrowRight} disableRipple>
+                            <div className={classes.arrowWrap}>
+                            <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
+                                display: 'block',
+                                fill:' rgb(255, 255, 255) ',
+                                height: '24px', 
+                                width: '24px'
+                                }}>                    
+                            <path fillRule="evenodd" d="M4.293 1.707A1 1 0 1 1 5.708.293l7.995 8a1 1 0 0 1 0 1.414l-7.995 8a1 1 0 1 1-1.415-1.414L11.583 9l-7.29-7.293z"></path>                
+                            </svg>
+                            </div>
+                            </Button>
+                            <CardContent className={classes.Text}>
+                            <div className={classes.data}>
+                            <div className={classes.location}>
+                                <Typography  component="p">
+                                    <span className={classes.neighbourhood}> </span>
+                                </Typography>
+                                <Typography className={classes.hood}>
+                                </Typography>
+                            </div>
+                            <div className={classes.listInfo}>
+                                <Typography className={classes.price}>
+                                Shs. 
+                                </Typography>
+                                <Typography component='div' className={classes.summary}>
+                                 BD BA  FAMILY
+                                </Typography>
+                                
+                            </div>
+                            </div>
+                            </CardContent>
 
-                                 <div className={classes.favorites}>
-                                     <img className={classes.Favourite} src={Favourites} alt='pic' />
-                                 </div>
-                                 <div className={classes.selection} 
-                                 style={{
-                                    bottom: 0,
-                                    right: '28px'
-                                 }}
-                                 >     
-                                    <input className={classes.listingCollection} type="checkbox" /></div>
-                             
-                                 
-                                </Link>
+                            </Card>
+                            
+                            </Paper>
+                                    </Grid>
+                                </Grid>
+                                
+                            </Grid>
+                            <Grid item xs={12} md={4} sm={4}>
+                                <Card className={classes.cardMap}>
+                                    <CardMedia
+                                    className={classes.mediaMap}
+                                    image={fakeMap} 
+                                    />
+                                </Card>
+                            </Grid>
+                    </Grid>
+                    
                 </section>
                                 
         </>
