@@ -14,6 +14,10 @@ router.route('/api/property/by/:userId')
 router.route('/api/property/propertyphoto/:propertyId')
     .get(propertyCtrl.photo)
 
+//route to list all the properties
+router.route('/api/property/allproperty')
+    .get(propertyCtrl.list)
+
 router.param('propertyId', propertyCtrl.propertyByID)
 
 router.param('userId', useCtrl.userByID)

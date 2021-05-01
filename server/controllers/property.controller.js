@@ -89,11 +89,25 @@ const isOwner = (req, res, next) => {
      next()
  }
 
+
+ //list all the available properties
+ const list = async (req, res) => {
+     try {
+         let property = await Property.find().select('name location price bedRooms bathRooms familyNumber')
+         res.json(property)
+     } catch (err) {
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+
  module.exports =  {
     create,
     read,
     propertyByID, 
     isOwner,
     listByLandlord, 
-    photo
+    photo,
+    list
 }

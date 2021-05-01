@@ -9,6 +9,7 @@ import {Link } from 'react-router-dom'
 import dotsPic from './../assets/images/3dots.svg'
 import FeaturedList from '../pages/featuredList'
 import Testimonial from '../pages/testimonial'
+import Modal from './../components/Modal'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -105,6 +106,7 @@ export default function Home(){
         <ObjectiveInfo />
         <FeaturedList />
         <Testimonial />
+        <Modal />
         </>
     )
 }

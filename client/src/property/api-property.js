@@ -33,7 +33,20 @@ const listByLandlord = async (params, credentials, signal) => {
   } 
 }
 
+// API endpoint for listing all properties
+const listAllProperties = async (signal) => {
+  try {
+    let response = await fetch('/api/property/allproperty',{
+      method: 'GET',
+      signal: signal
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
 export {
     create,
-    listByLandlord
+    listByLandlord,
+    listAllProperties
 }
