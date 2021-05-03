@@ -16,6 +16,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Paper from '@material-ui/core/Paper'
 import { listAllProperties } from './api-property'
 import Skeleton from './skeleton'
+import Modal from './../components/Modal'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -229,6 +230,16 @@ export default function RentalProperty() {
     const classes = useStyles()
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
+    const [open, setOpen] = useState(false)
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+    }
+   
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -257,7 +268,8 @@ export default function RentalProperty() {
             listStyle: 'none'}}>            
           <li className={classes.list}><button className={classes.buttonSearchIcon}></button>
           </li> 
-          <li className={classes.filter} >Neighborhoods</li>                    
+          <li className={classes.filter} onClick={() => setOpen(!open)}>Neighborhoods</li>   
+          <Modal open={open} handleClose={handleClose} />                 
               <li className={classes.filter} >Price</li>                        
               <li className={classes.filter} >Bedrooms</li>                        
               <li className={classes.filter} >More Filters</li>    

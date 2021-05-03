@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
+import TextField from '@material-ui/core/TextField';
 import { useSpring, animated } from 'react-spring';
 
 import './style.css'
@@ -12,14 +13,57 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        top: '112px !important',
+
+        '&:focus': {
+            outline: 'none'
+
+        }
         
       },
       paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: '2px solid #fff',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        // padding: theme.spacing(2, 4, 3),
+        width:'40vw',
+        height: 'auto',
+        margin: '0 auto',
+        padding: '40px 20px 20px 20px',
+        backgroundColor: '#fff',
+        zIndex: 11
       },
+      neighborhoodFilter: {
+          border:'none',
+          padding: 0
+      },
+      leftAligned: {
+        margin: '10px 0',
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignContent: 'left',
+        padding: 0,
+        listStyle: 'none'
+      },
+      neighbourList: {
+        height: '50px',
+        padding: '0 20px',
+        margin: 0,
+        fontFamily: 'OpenSans-regular,sans-serif',
+        fontSize: '14px',
+        lineHeight: '50px',
+        color: '#acacac',
+        textAlign: 'center',
+        verticalAlign: 'middle',
+        border: '1px solid #d4d4d4',
+        display: 'inline-block',
+        cursor:' pointer',
+        marginRight: '-1px',
+        marginTop: '-1px'
+      },
+      textSearch: {
+          with: '100%'
+      }
 }))
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -52,38 +96,39 @@ Fade.propTypes = {
     onExited: PropTypes.func
 }
 
-export default function ModalFun() {
+export default function ModalFun(props) {
     const classes = useStyles()
-    const [open, setOpen] = useState(false)
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
     return (
         <>
-        <button type='button' onClick={handleOpen}>
-            react-spring
-        </button>
         <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
         className={classes.modal}
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-           <Fade in={open}>
+           <Fade in={props.open}>
           <div className={classes.paper}>
-            <h2 id="spring-modal-title">Spring modal</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
+        <div className={classes.neighborhoodFilter}>     
+                           <ul className={classes.leftAligned}>      
+                            <li className={classes.neighbourList}>              
+                                              <span class="" >Layibi</span>       
+                                                                   </li>              
+                                                            <li className={classes.neighbourList}>             
+                                                        <span class="" >Bar De Ge</span>      
+                                                        </li>           
+                                                    <li className={classes.neighbourList}>       
+                                                <span class="" >Pece</span> </li>               
+                                                                      <li className={classes.neighbourList}>   
+                                                                   <span class="" >Laroo</span>   </li>     
+                                                                   </ul>
+                                                                   <TextField variant="outlined" placeholder='Type name to Search' className={classes.textSearch}/>
+                                                                   </div> 
           </div>
         </Fade>
       </Modal>
