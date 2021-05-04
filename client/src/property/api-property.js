@@ -1,4 +1,4 @@
-
+import queryString from 'query-string'
 
 const create = async (params, credentials, property) => {
     try {
@@ -45,8 +45,23 @@ const listAllProperties = async (signal) => {
     console.log(err)
   }
 }
+
+//search property API
+const searchProperty = async (params, signal) => {
+  const query = queryString.stringify(params)
+  try {
+    let response = await fetch('api/property/searchproperty?'+query, {
+      method: 'GET',
+    })
+      return response.json()
+  } catch(err){
+    console.log(err)
+  }
+}
+
 export {
     create,
     listByLandlord,
-    listAllProperties
+    listAllProperties,
+    searchProperty
 }

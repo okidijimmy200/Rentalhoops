@@ -102,6 +102,35 @@ const isOwner = (req, res, next) => {
      }
  }
 
+ // search property according to categories searchProperty
+ const searchProperty = async (req, res) => {
+    const query = {}
+    if (req.query.search)
+        query.name = {'$regex': req.query.search, '$options': "i"}
+    if (req.query.regionCategory && req.query.regionCategory != 'All')
+        query.regionCategory = req.query.regionCategory
+    try {
+        let property = await Property.find(query).populate('owner','_id name').select('-image').exec()
+        res.json(property)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+ }
+
+
+ const listCategories = async (req, res) => {
+     try {
+         let property = await Property.distinct('regionCategory', {})
+         res.json(property)
+     }catch(err) {
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+
  module.exports =  {
     create,
     read,
@@ -109,5 +138,7 @@ const isOwner = (req, res, next) => {
     isOwner,
     listByLandlord, 
     photo,
-    list
+    list,
+    searchProperty,
+    listCategories
 }

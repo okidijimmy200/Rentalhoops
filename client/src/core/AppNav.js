@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Search from './../components/Search'
 
-const styles = theme => ({
+const useStyles =makeStyles(theme => ({
 
     tabContent: {
         padding: theme.spacing(2),
@@ -30,15 +30,6 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    InputName:{
-        padding: '27px 20px',
-        alignSelf: 'stretch',
-        width: '100%',
-        border: 'none',
-        '&:focus': {
-            outline: '0 !important'
-        }
-    },
     optionsValue: {
         height: '35px',
         margin: '0',
@@ -54,17 +45,13 @@ const styles = theme => ({
        '&:focus' :{
            outline:'0 !important'
         }       
-    },
-    homeSBRight:{
-        flex: '1',
-        alignItems: 'center',
-        justifyContent: 'center'
     }
-});
+}))
 
-function AppBarIntegration({classes}) {
+export default function AppBarIntegration() {
+    const classes = useStyles()
     const [value, setValue] = useState(0);
-
+    
     const onChange = (e, value) => {
         setValue(value)
     };
@@ -83,19 +70,20 @@ function AppBarIntegration({classes}) {
             {value === 0 && (
                 <div className={classes.main} >
                     <div className={classes.tabContent}>
-                    <select className={classes.optionsValue}>
+                    <select className={classes.optionsValue}
+                    // value={searchValue.category}
+
+                    >
                         <option>Gulu City Center</option>
-                        <option>Layibi</option>
+                        <option>Metroplitan Gulu</option>
                     
                     {/* <div className='homeSBLeft'>
                         test
                     </div> */}
                     </select>
                     </div>
-                    <form className={classes.homeSBRight}>
-                    <input type='text' className={classes.InputName} placeholder='Enter a neighbourhood, address or agent'/>
+                   <Search />
                     
-                    </form>
                 </div>
             )}
             {/* {value === 1 && (
@@ -111,5 +99,3 @@ function AppBarIntegration({classes}) {
         </div>
     )
 }
-
-export default withStyles(styles)(AppBarIntegration)

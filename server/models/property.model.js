@@ -31,6 +31,10 @@ const PropertySchema = new mongoose.Schema({
         type: String,
         enum: ['Single', 'Nuclear', 'Big']
     },
+    regionCategory: {
+        type: String,
+        enum: ['GuluCity', 'MetroplitanGulu']
+    },
     owner:{
         type: mongoose.Schema.ObjectId, ref: 'User'
     }

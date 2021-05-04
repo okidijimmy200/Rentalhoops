@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import SearchIcon from './../assets/images/search.svg'
 import ExpandIcon from './../assets/images/expand.svg'
@@ -226,20 +226,22 @@ const useStyles = makeStyles(theme => ({
       }
 }))
 
-export default function RentalProperty() {
+export default function RentalProperty(props) {
     const classes = useStyles()
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
     const [open, setOpen] = useState(false)
+    const [search, setSearch]= useState(false)
+    const [price, setPrice] = useState(false)
+    const [bedrooms, setBedrooms] = useState(false)
 
     const handleOpen = () => {
         setOpen(true)
     }
 
     const handleClose = () => {
-        setOpen(false)
+        setOpen(false) ||  setSearch(false) || setPrice(false) || setBedrooms(false)
     }
-   
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -260,19 +262,21 @@ export default function RentalProperty() {
 
     return (
         <>
-        <div className={classes.root}>
+        <div className={classes.root} >
           <ul className={classes.justifiedListBig} style={{
               margin: '0',
               padding: '0 10px',
             fontSize: '14px}',
             listStyle: 'none'}}>            
-          <li className={classes.list}><button className={classes.buttonSearchIcon}></button>
+          <li className={classes.list} onClick={() => setSearch(!search)}><button className={classes.buttonSearchIcon}>
+          {/* <Modal search={search} handleCloseBtn={handleCloseBtn}/> */}
+          </button>
           </li> 
           <li className={classes.filter} onClick={() => setOpen(!open)}>Neighborhoods</li>   
-          <Modal open={open} handleClose={handleClose} />                 
-              <li className={classes.filter} >Price</li>                        
-              <li className={classes.filter} >Bedrooms</li>                        
-              <li className={classes.filter} >More Filters</li>    
+                         
+              <li className={classes.filter} onClick={() => setPrice(!price)}>Price</li>                        
+              <li className={classes.filter} onClick={() => setBedrooms(!bedrooms)} >Bedrooms</li>                        
+              {/* <li className={classes.filter} >More Filters</li>     */}
                         <li className={classes.list}>  <button className={classes.saveFilter} >Save</button>                
                         <button className={classes.saveFilter} style={{color: '#404040'}}>Clear</button>            
                         </li>            <li className={classes.list}>                
@@ -290,6 +294,7 @@ export default function RentalProperty() {
                             <span className="results" >0<span> Results</span></span>           
                              </li> 
                                 </ul>
+                                <Modal open={open} handleClose={handleClose} search={search} price={price} bedrooms={bedrooms}/> 
                 </div>
                 <section >
                     <Grid container spacing={0} style={{marginTop: '115px'}} >

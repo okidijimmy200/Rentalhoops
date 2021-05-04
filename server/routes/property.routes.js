@@ -18,6 +18,14 @@ router.route('/api/property/propertyphoto/:propertyId')
 router.route('/api/property/allproperty')
     .get(propertyCtrl.list)
 
+// router for searching property
+router.route('/api/property/searchproperty')
+    .get(propertyCtrl.searchProperty)
+
+//router for searching according to categories
+router.route('/api/property/categories')
+    .get(propertyCtrl.listCategories)
+
 router.param('propertyId', propertyCtrl.propertyByID)
 
 router.param('userId', useCtrl.userByID)

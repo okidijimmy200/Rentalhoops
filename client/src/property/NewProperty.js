@@ -63,6 +63,7 @@ export default function NewProduct() {
       bathRooms: '',
       familyNumber: '',
       price: '',
+      regionCategory: '',
       redirect: false,
       error: '',
   })
@@ -86,7 +87,7 @@ export default function NewProduct() {
     values.price && propertyData.append('price', values.price)
     values.bathRooms && propertyData.append('bathRooms', values.bathRooms)
     values.familyNumber && propertyData.append('familyNumber', values.familyNumber)
-
+    values.regionCategory && propertyData.append('regionCategory', values.regionCategory)
     create({
       userId: jwt.user._id
     },{
@@ -128,7 +129,12 @@ export default function NewProduct() {
                   apiKey="AIzaSyAxbWxbdy4SFXMFKAo17i2uBUAlQTUYh7Y"
     /> */}
           <TextField id="location" label="location" className={classes.textField} value={values.location} onChange={handleChange('location')} margin="normal" />
-          
+
+          <TextField id="regionCategory" label="regionCategory" className={classes.textField} value={values.regionCategory} onChange={handleChange('regionCategory')} select margin="normal">
+                <MenuItem value="GuluCIty">Gulu City</MenuItem>
+                <MenuItem value="MetroplitanGulu">Metropolitan Gulu</MenuItem>
+              </TextField><br/>
+
           <TextField id="bedRooms" label="Bedrooms" className={classes.textField} value={values.bedRooms} onChange={handleChange('bedRooms')} select margin="normal">
                 <MenuItem value="1">1 Room</MenuItem>
                 <MenuItem value="2">2 Rooms</MenuItem>
