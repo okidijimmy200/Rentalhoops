@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState,  useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { searchProperty } from './../property/api-property'
-import RentalProperty from './../property/RentalProperty'
+import { searchProperty, listCategories } from './../property/api-property'
+import { Redirect } from 'react-router-dom'
+import Property from './../property/Property'
 
 const useStyles = makeStyles(theme => ({
     homeSBRight:{
@@ -17,55 +18,146 @@ const useStyles = makeStyles(theme => ({
             outline: '0 !important'
         }
     },
+    tabContent: {
+        padding: theme.spacing(2),
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        width: '100%',
+        boxShadow: '0 0 25px 0 rgb(64 64 64 / 50%)',
+        flex: '0 0 15%'
+    },
+    optionsValue: {
+        height: '35px',
+        margin: '0',
+        paddingTop: '0',
+        paddingBottom: '0',
+        fontFamily: 'OpenSans-semibold',
+        fontSize: '15px',
+        lineHeight: '40px',
+        verticalAlign: 'middle',
+        border: '10px solid #fff',
+        backgroundColor:' #fff',
+        color: '#404040',
+       '&:focus' :{
+           outline:'0 !important'
+        }       
+    },
+    main:{
+        position: 'relative',
+        display: 'flex',
+        backgroundColor: '#fff',
+        maxWidth: '800px',
+        height: '70px',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 }))
 
-export default function Search() {
+const Search = ({ history }) =>  {
     const classes =useStyles()
-    const [value, setValue] = useState({
-        category: '',
+    const [values, setValues] = useState({
+        category: 'All',
         search: '',
         results: [],
-        searched: false
+        searched: false,
     })
+    const [categories, setCategories] = useState([])
+    const [keyword, setKeyWord] = useState('')
 
     const handleChange = name => event => {
-        setValue({
-            ...value, [name]: event.target.value,
+        setValues({
+            ...values, [name]: event.target.value,
             
         })
+        console.log(event.target.value)
     }
 
-    const search = () => {
-        if(value.search){
-            searchProperty({
-                //params passed to be searched ie text
-                search: value.search || undefined, category: value.category
-            }).then((data) => {
-                if(data.error) {
-                    console.log(data.error)
-                } else {
-                    setValue({...value, results: data, searched: true})
-                }
-            })
+    useEffect(() => {
+        const abortController = new AbortController()
+        const signal = abortController.signal
+        listCategories(signal).then((data) => {
+            if(data.error) {
+                console.log(data.error)
+            } else {
+                setCategories(data)
+                console.log(data)
+            }
+        })
+        return function cleanup() {
+            abortController.abort()
+        }
+    }, [])
+
+    const search = (e) => {
+        e.preventDefault()
+        if (keyword.trim() && values.category) {
+            history.push(`/search/${keyword}&${values.category}`)
+        
+        }
+        else {
+            history.push('/')
         }
     }
 
+    // const search = () => {
+    //     if(values.search.trim()){
+    //         searchProperty({
+    //             //params passed to be searched ie text
+    //             search: values.search || undefined, category: values.category
+    //         }).then((data) => {
+    //             if(data.error) {
+    //                 console.log(data.error)
+    //             } else {
+    //                 setValues({...values, results: data, searched:true})
+    //                 console.log(data)
+    //             }
+    //         })
+    //     }
+    // }
+    //redirect to search page
+    // if (values.searched) {
+    //     <Redirect to={`/search/${values.search}`} component={Property}/>
+    // } 
+
     const enterKey = (event) => {
-        if(event.keyCode ==13){
+        if(event.keyCode == 13){
             event.preventDefault()
             search()
         }
     }
     return (
         <>
+        <div className={classes.main} >
+            <div className={classes.tabContent}>
+                    <select className={classes.optionsValue}
+                    value={values.category}
+                    onChange={handleChange('category')}
+                    // onChange={(e) => setKeyWord(e.target.value) }
+                    // value={searchValue.category}
+
+                    >
+                        <option >All</option>
+                        {categories.map(item => (
+                             <option key={item}>{item}</option>
+                        ))}
+                       
+                    </select>
+                    </div>
+
              <form className={classes.homeSBRight} onSubmit={search}>
                     <input type='text' className={classes.InputName}
                      placeholder='Enter a neighbourhood, address or agent'
-                     onKeyDown={enterKey}
-                     onChange={handleChange('search')}
+                     onChange={(e) => setKeyWord(e.target.value)}
                      />
                     
                     </form>
+                   
+                    </div>
+                    <div>
+                    {/* <Property property={values.results} searched={values.searched}/> */}
+                    </div>
         </>
     )
 }
+
+export default Search;

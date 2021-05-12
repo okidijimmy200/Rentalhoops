@@ -31,7 +31,7 @@ const PropertySchema = new mongoose.Schema({
         type: String,
         enum: ['Single', 'Nuclear', 'Big']
     },
-    regionCategory: {
+    category: {
         type: String,
         enum: ['GuluCity', 'MetroplitanGulu']
     },

@@ -93,7 +93,7 @@ const isOwner = (req, res, next) => {
  //list all the available properties
  const list = async (req, res) => {
      try {
-         let property = await Property.find().select('name location price bedRooms bathRooms familyNumber')
+         let property = await Property.find().select('name location price bedRooms bathRooms familyNumber category')
          res.json(property)
      } catch (err) {
          return res.status(400).json({
@@ -103,26 +103,45 @@ const isOwner = (req, res, next) => {
  }
 
  // search property according to categories searchProperty
- const searchProperty = async (req, res) => {
-    const query = {}
-    if (req.query.search)
-        query.name = {'$regex': req.query.search, '$options': "i"}
-    if (req.query.regionCategory && req.query.regionCategory != 'All')
-        query.regionCategory = req.query.regionCategory
+//  const searchProperty = async (req, res) => {
+//     const query = {}
+//     if(req.query.search) 
+//       query.location = {'$regex': req.query.search, '$options': "i"}
+//     if(req.query.category && req.query.category != 'All')
+//       query.category =  req.query.category
+//     try {
+//       let property = await Property.find(query).populate('owner', '_id name').select('-image').exec()
+//       res.json(property)
+//     } catch (err){
+//       return res.status(400).json({
+//         error: errorHandler.getErrorMessage(err)
+//       })
+//     }
+//   }
+
+const searchProperty = async (req, res) => {
+    const keyword= {}
+    if (req.query.keyword)
+        keyword.location = {'$regex': req.query.keyword,'$options': 'i'}
+    if(req.query.category && req.query.category != 'All')
+        keyword.category = req.query.category
+
     try {
-        let property = await Property.find(query).populate('owner','_id name').select('-image').exec()
+        let property = await Property.find(keyword).populate('owner', '_id name').select('-image').exec()
         res.json(property)
-    } catch (err) {
+    } 
+    
+    catch(err){
         return res.status(400).json({
             error: errorHandler.getErrorMessage(err)
-        })
+          })
     }
- }
+}
 
 
  const listCategories = async (req, res) => {
      try {
-         let property = await Property.distinct('regionCategory', {})
+         let property = await Property.distinct('category', {})
          res.json(property)
      }catch(err) {
          return res.status(400).json({

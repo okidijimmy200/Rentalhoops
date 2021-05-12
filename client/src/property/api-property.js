@@ -1,4 +1,4 @@
-import queryString from 'query-string'
+const queryString = require('query-string');
 
 const create = async (params, credentials, property) => {
     try {
@@ -50,11 +50,24 @@ const listAllProperties = async (signal) => {
 const searchProperty = async (params, signal) => {
   const query = queryString.stringify(params)
   try {
-    let response = await fetch('api/property/searchproperty?'+query, {
+    let response = await fetch(`/api/property/searchproperty?`+query, {
       method: 'GET',
     })
-      return response.json()
+    return response.json()
   } catch(err){
+    console.log(err)
+  }
+}
+
+//list properties by categories
+const listCategories = async (signal) => {
+  try {
+    let response = await fetch('/api/property/categories', {
+      method: 'GET',
+      signal: signal
+    })
+    return response.json()
+  } catch(err) {
     console.log(err)
   }
 }
@@ -63,5 +76,6 @@ export {
     create,
     listByLandlord,
     listAllProperties,
-    searchProperty
+    searchProperty,
+    listCategories
 }

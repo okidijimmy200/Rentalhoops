@@ -259,7 +259,7 @@ export default function LandlordProperty() {
                             <div className={classes.data}>
                             <div className={classes.location}>
                                 <Typography  component="p">
-                                    <span className={classes.neighbourhood}> {property.name}</span>
+                                    <span className={classes.neighbourhood}> {property.name} {property.regionCategory}</span>
                                 </Typography>
                                 <Typography className={classes.hood}>
                                     {property.location}

@@ -10,13 +10,14 @@ import Signup from './accounts/Signup'
 import Login from './accounts/Login'
 import NewProduct from './property/NewProperty'
 import RentalProperty from './property/RentalProperty'
-
+import Property from './property/Property'
 
 const MainRouter = () => {
     return (<div>
       <Menu/>
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route  exact path="/search/:keyword" component={Property} />
         <Route exact path="/rent" component={RentalProperty} />
         <Route path="/users" component={Users}/>
         <Route exact path='/signup' component={Signup} />
