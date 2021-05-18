@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -58,7 +58,9 @@ export default function NewProduct() {
   const [values, setValues] = useState({
       name: '',
       location: '',
-      image: '',
+      imagePrimary: '',
+      imageSecondary: '',
+      imageTetiary: '',
       bedRooms: '',
       bathRooms: '',
       familyNumber: '',
@@ -70,19 +72,40 @@ export default function NewProduct() {
 // authentication
   const jwt = auth.isAuthenticated()
 
+ 
   const handleChange = name => event => {
     // eslint-disable-next-line
-    const value = name === 'image'
-      ? event.target.files[0]
-      : event.target.value
-    setValues({...values,  [name]: value })
+    // const file = Array.from(event.target.files)
+    // if(name === 'imagePrimary') {
+    //   setValues({...values, [name] : event.target.files})
+    // }
+    if(name  === 'imagePrimary') {
+      setValues({...values, [name]: event.target.files[0]})
+    }
+    else if (name  === 'imageSecondary') {
+      setValues({...values, [name]: event.target.files[0]})
+    }
+    else if (name  === 'imageTetiary' ) {
+      setValues({...values, [name]: event.target.files[0]})
+    }
+    else {
+      setValues({...values,[name] : event.target.value})
+    }
+    // const value = name === 'imagePrimary' || 'imageSecondary' || 'imageTetiary'
+    //   ? event.target.files
+    //   : event.target.value
+    // setValues({...values,  [name]: value })
+    // console.log(event.target.files[0])
   }
+
 
   const clickSubmit = () => {
     let propertyData = new FormData()
     values.name && propertyData.append('name', values.name)
     values.location && propertyData.append('location', values.location)
-    values.image && propertyData.append('image', values.image)
+    values.imagePrimary && propertyData.append('imagePrimary', values.imagePrimary)
+    values.imageSecondary && propertyData.append('imageSecondary', values.imageSecondary)
+    values.imageTetiary && propertyData.append('imageTetiary', values.imageTetiary)
     values.bedRooms && propertyData.append('bedRooms', values.bedRooms)
     values.price && propertyData.append('price', values.price)
     values.bathRooms && propertyData.append('bathRooms', values.bathRooms)
@@ -110,13 +133,28 @@ export default function NewProduct() {
           <Typography type="headline" component="h2" className={classes.title}>
             New House Upload
           </Typography><br/>
-          <input accept="image/*" onChange={handleChange('image')} className={classes.input} id="icon-button-file" type="file"/>
+          <input accept="image/*" multiple onChange={handleChange('imagePrimary')} className={classes.input} id="icon-button-file" type="file"/>
           <label htmlFor="icon-button-file">
             <Button variant="contained" color="secondary" component="span">
               Upload Photo
               <FileUpload/>
             </Button>
-          </label> <span className={classes.filename}>{values.image ? values.image.name : ''}</span><br/>
+          </label> <span className={classes.filename}>{values.imagePrimary ? values.imagePrimary.name : ''}</span><br/>
+          <input accept="image/*" multiple onChange={handleChange('imageSecondary')} className={classes.input} id="icon-button-file-1" type="file"/>
+          <label htmlFor="icon-button-file-1">
+            <Button variant="contained" color="secondary" component="span">
+              Upload Photo
+              <FileUpload/>
+            </Button>
+          </label> <span className={classes.filename}>{values.imageSecondary ? values.imageSecondary.name : ''}</span><br/>
+          <input accept="image/*" multiple onChange={handleChange('imageTetiary')} className={classes.input} id="icon-button-file-2" type="file"/>
+          <label htmlFor="icon-button-file-2">
+            <Button variant="contained" color="secondary" component="span">
+              Upload Photo
+              <FileUpload/>
+            </Button>
+          </label>
+          <span className={classes.filename}>{values.imageTetiary ? values.imageTetiary.name : ''}</span><br/>
           {/* <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/> */}
           <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} select margin="normal">
                 <MenuItem value="Apartment">Apartment</MenuItem>
@@ -131,7 +169,7 @@ export default function NewProduct() {
           <TextField id="location" label="location" className={classes.textField} value={values.location} onChange={handleChange('location')} margin="normal" />
 
           <TextField id="category" label="category" className={classes.textField} value={values.category} onChange={handleChange('category')} select margin="normal">
-                <MenuItem value="GuluCIty">Gulu City</MenuItem>
+                <MenuItem value="GuluCity">Gulu City</MenuItem>
                 <MenuItem value="MetroplitanGulu">Metropolitan Gulu</MenuItem>
               </TextField><br/>
 

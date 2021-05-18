@@ -19,6 +19,7 @@ import {read} from './api-user.js'
 import {Redirect, Link} from 'react-router-dom'
 import LandlordProperty from './../property/LandlordProperty'
 import { listByLandlord} from './../property/api-property'
+import { SliderData } from '../components/SliderData'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
@@ -171,7 +172,7 @@ export default function Profile({ match }) {
           <div className={classes.rootMain}>
         <Grid container spacing={4}>
             <Grid item xs={12} sm={9} md={9}>
-            <LandlordProperty />
+            <LandlordProperty  slides={SliderData}/>
             </Grid>
             <Grid item xs={12} sm={3} md={3}>
         <Paper className={classes.root} elevation={4} style={{marginTop: '26px'}}>

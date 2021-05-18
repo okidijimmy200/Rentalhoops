@@ -6,13 +6,19 @@ const useCtrl = require('../controllers/user.controller')
 const router = express.Router()
 
 router.route('/api/property/by/:userId')
-    .post(authCtrl.requireSignin, authCtrl.hasAuthorization, useCtrl.isLandlord, propertyCtrl.create)
+    .post(authCtrl.requireSignin, authCtrl.hasAuthorization, useCtrl.isLandlord,propertyCtrl.create)
     .get(authCtrl.requireSignin, authCtrl.hasAuthorization, propertyCtrl.listByLandlord)
 
 
 // get the route
-router.route('/api/property/propertyphoto/:propertyId')
-    .get(propertyCtrl.photo)
+router.route('/api/property/propertyphotoprimary/:propertyId')
+    .get(propertyCtrl.photoPrimary)
+
+router.route('/api/property/propertyphotosecondary/:propertyId')
+    .get(propertyCtrl.photoSecondary)
+
+router.route('/api/property/propertyphototetiary/:propertyId')
+    .get(propertyCtrl.photoTetiary)
 
 //route to list all the properties
 router.route('/api/property/allproperty')

@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import SearchIcon from './../assets/images/search.svg'
 import ExpandIcon from './../assets/images/expand.svg'
 import BgPic from './../assets/images/house.jpeg'
-import ListingBag from './../assets/images/add-to-listings-bag.svg'
-import Favourites from './../assets/images/favorite.svg'
 import { Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import fakeMap from './../assets/images/fake-map2.jpg'
@@ -236,7 +234,7 @@ export default function Property({ match }) {
     const [search, setSearch]= useState(false)
     const [price, setPrice] = useState(false)
     const [bedrooms, setBedrooms] = useState(false)
-
+    const [count, setCount] = useState('')
     const handleOpen = () => {
         setOpen(true)
     }
@@ -268,6 +266,7 @@ export default function Property({ match }) {
 
     const searchList = useSelector(state => state.propertySearch)
     const {property, error} = searchList
+
 
     useEffect(() => {
       dispatch(listSearch(keyword))

@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 const Search = ({ history }) =>  {
     const classes =useStyles()
     const [values, setValues] = useState({
-        category: 'All',
+        category: '',
         search: '',
         results: [],
         searched: false,
@@ -136,7 +136,7 @@ const Search = ({ history }) =>  {
                     // value={searchValue.category}
 
                     >
-                        <option >All</option>
+                        <option >Region</option>
                         {categories.map(item => (
                              <option key={item}>{item}</option>
                         ))}

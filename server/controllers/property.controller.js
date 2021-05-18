@@ -3,7 +3,8 @@ const errorHandler = require('../helpers/dbErrorHandler')
 const formidable = require('formidable')
 // const extend = require('lodash/extend')
 const fs = require('fs')
-
+const multer = require('multer')
+const AppError = require('./../utils/appError')
 
 // creating a form
 const create = (req, res, next) => {
@@ -14,13 +15,28 @@ const create = (req, res, next) => {
             return res.status(400).json({
                 message: 'Image could not be uploaded'
             })
+
         }
         let property = new Property(fields)
         property.owner = req.profile
-        if(files.image) {
-            property.image.data = fs.readFileSync(files.image.path)
-            property.image.contentType = files.image.type
+        if(files.imagePrimary && files.imageSecondary && files.imageTetiary) {
+            property.imagePrimary.data = fs.readFileSync(files.imagePrimary.path)
+            property.imagePrimary.contentType = files.imagePrimary.type
+
+            property.imageSecondary.data = fs.readFileSync(files.imageSecondary.path)
+            property.imageSecondary.contentType = files.imageSecondary.type
+
+            property.imageTetiary.data = fs.readFileSync(files.imageTetiary.path)
+            property.imageTetiary.contentType = files.imageTetiary.type
         }
+        // else if(files.imageSecondary) {
+        //     property.imageSecondary.data = fs.readFileSync(files.imageSecondary.path)
+        //     property.imageSecondary.contentType = files.imageSecondary.type
+        // }
+        // else if (files.imageTetiary) {
+        //     property.imageTetiary.data = fs.readFileSync(files.imageTetiary.path)
+        //     property.imageTetiary.contentType = files.imageTetiary.type
+        // }
         try {
             let result = await property.save()
             res.json(result)
@@ -32,6 +48,8 @@ const create = (req, res, next) => {
 
     })
 }
+
+
 
 // retrieving property
 
@@ -53,7 +71,7 @@ const propertyByID = async (req, res, next, id) => {
 
 //read request
 const read = (req, res) => {
-    req.property.image = undefined
+    req.property.imagePrimary  = undefined
     return res.json(req.property)
 }
 
@@ -81,13 +99,29 @@ const isOwner = (req, res, next) => {
  } 
 
  //photo controller
- const photo = (req, res, next) => {
-     if(req.property.image.data) {
-         res.set("Content-Type", req.property.image.contentType)
-         return res.send(req.property.image.data)
+ const photoPrimary = (req, res, next) => {
+     if(req.property.imagePrimary.data) {
+         res.set("Content-Type", req.property.imagePrimary.contentType)
+         return res.send(req.property.imagePrimary.data)
      }
      next()
  }
+
+ const photoSecondary = (req, res, next) => {
+    if(req.property.imageSecondary.data) {
+        res.set("Content-Type", req.property.imageSecondary.contentType)
+        return res.send(req.property.imageSecondary.data)
+    }
+    next()
+}
+
+const photoTetiary = (req, res, next) => {
+    if(req.property.imageTetiary.data) {
+        res.set("Content-Type", req.property.imageTetiary.contentType)
+        return res.send(req.property.imageTetiary.data)
+    }
+    next()
+}
 
 
  //list all the available properties
@@ -101,23 +135,6 @@ const isOwner = (req, res, next) => {
          })
      }
  }
-
- // search property according to categories searchProperty
-//  const searchProperty = async (req, res) => {
-//     const query = {}
-//     if(req.query.search) 
-//       query.location = {'$regex': req.query.search, '$options': "i"}
-//     if(req.query.category && req.query.category != 'All')
-//       query.category =  req.query.category
-//     try {
-//       let property = await Property.find(query).populate('owner', '_id name').select('-image').exec()
-//       res.json(property)
-//     } catch (err){
-//       return res.status(400).json({
-//         error: errorHandler.getErrorMessage(err)
-//       })
-//     }
-//   }
 
 const searchProperty = async (req, res) => {
     const keyword= {}
@@ -156,7 +173,9 @@ const searchProperty = async (req, res) => {
     propertyByID, 
     isOwner,
     listByLandlord, 
-    photo,
+    photoPrimary,
+    photoSecondary,
+    photoTetiary,
     list,
     searchProperty,
     listCategories

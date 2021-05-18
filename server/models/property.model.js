@@ -7,7 +7,15 @@ const PropertySchema = new mongoose.Schema({
         enum: ['Apartment', 'Bungalow', 'villas', 'RowHouses'],
         required: 'Type of house is required'
     },
-    image: {
+    imagePrimary: {
+        data: Buffer,
+        contentType: String
+    },
+    imageSecondary: {
+        data: Buffer,
+        contentType: String
+    },
+    imageTetiary: {
         data: Buffer,
         contentType: String
     },

@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
+import { SliderData } from './../components/SliderData'
+import _uniqueId from 'lodash/uniqueId';
 
 // styling the component
 const useStyles = makeStyles(theme => ({
@@ -188,12 +190,13 @@ const useStyles = makeStyles(theme => ({
       }
 }))
 
-export default function LandlordProperty() {
+export default function LandlordProperty({slides }) {
     const classes = useStyles()
     const [property, setProperty] = useState([])
     const [redirectToSignin, setRedirectToSignin] = useState(false)
     const jwt = auth.isAuthenticated()
-
+    const [current, setCurrent] = useState(0)
+    const length = slides.length;
     //fetch the list property API
     useEffect(() => {
         const abortController = new AbortController()
@@ -213,6 +216,22 @@ export default function LandlordProperty() {
         }
        // eslint-disable-next-line 
     }, [jwt.user._id])
+
+
+    const nextSlide = () => {
+      //  console.log('event.currentTarget.dataset.id', event.currentTarget.dataset.id);
+        setCurrent(current === length -1 ? 0 : current + 1);
+      
+
+    }
+
+    const prevSlide = () => {
+      setCurrent(current === 0 ? length - 1 : current - 1);
+    }
+
+    if (!Array.isArray(slides) || slides.length <= 0){
+      return null
+    }
     
 
     if (redirectToSignin) {
@@ -229,9 +248,19 @@ export default function LandlordProperty() {
                     return <Grid item xs={12} sm={12} md={6} key={i}>
                         <Paper className={classes.paper} component='div'>
                             <Card className={classes.card}>
-                            <img className={classes.media}  alt="pic" src={'/api/property/propertyphoto/' + property._id}/>
-                            <Button component='div' className={classes.arrowLeft} disableRipple>
-                            <div className={classes.arrowWrap}>
+                            {SliderData.map((slide, index) => {
+                            return(
+                              <div key={index} style={{width:'100%', margin: '0 auto'}}>
+                                {index === current && (
+                                  <img className={classes.media} key={index} alt="pic" src={slide.image + property._id} />
+                                )}
+                                 
+                              </div>
+                             
+                            )
+                          })}
+                            <Button component='div' className={classes.arrowLeft} disableRipple onClick={prevSlide}>
+                            <div className={classes.arrowWrap}  >
                             <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
                             style={{
                                 display: 'block ',
@@ -243,7 +272,7 @@ export default function LandlordProperty() {
                                 </path> </svg>
                             </div>
                             </Button>
-                            <Button className={classes.arrowRight} disableRipple>
+                            <Button className={classes.arrowRight} disableRipple  onClick={nextSlide} data-id={property._id}>
                             <div className={classes.arrowWrap}>
                             <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
                                 display: 'block',
@@ -275,8 +304,8 @@ export default function LandlordProperty() {
                                 
                             </div>
                             </div>
+                            
                             </CardContent>
-
                             </Card>
                             
                             </Paper>

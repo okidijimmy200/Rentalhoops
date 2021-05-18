@@ -234,6 +234,7 @@ export default function RentalProperty(props) {
     const [search, setSearch]= useState(false)
     const [price, setPrice] = useState(false)
     const [bedrooms, setBedrooms] = useState(false)
+    const [count, setCount] = useState('')
 
     const handleOpen = () => {
         setOpen(true)
@@ -253,7 +254,9 @@ export default function RentalProperty(props) {
             } else {
                 setLoading(false)
                 setProperties(data)
+                setCount(data.length)
             }
+            // const number = data.length
         })
         return function cleanup() {
             abortController.abort()
@@ -291,7 +294,7 @@ export default function RentalProperty(props) {
                                 <option value="photos">Photo: Default</option>
                                 <option value="floorplans">Floorplans</option>
                             </select>                
-                            <span className="results" >0<span> Results</span></span>           
+                            <span className="results" >{count}<span> Results</span></span>           
                              </li> 
                                 </ul>
                                 <Modal open={open} handleClose={handleClose} search={search} price={price} bedrooms={bedrooms}/> 
@@ -305,7 +308,7 @@ export default function RentalProperty(props) {
                                                         return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>
                                                                <Paper className={classes.paper} component='div'>
                                                        <Card className={classes.card}>
-                                                       <img className={classes.media}  alt="pic" src={'/api/property/propertyphoto/' + property._id}/>
+                                                       <img className={classes.media}  alt="pic" src={'/api/property/propertyphotoprimary/' + property._id}/>
                                                        <Button component='div' className={classes.arrowLeft} disableRipple>
                                                        <div className={classes.arrowWrap}>
                                                        <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
