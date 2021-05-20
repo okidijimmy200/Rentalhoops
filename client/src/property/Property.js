@@ -35,11 +35,7 @@ const Property = ({ property }) => {
 
           return (
             <div key={slide.id} style={{ width: "100%", margin: "0 auto" }}>
-              <img
-                className={classes.media}
-                alt="pic"
-                src={slide.image + property._id}
-              />
+              <img className={classes.media} alt="pic" src={slide.url} />
             </div>
           );
         })}
