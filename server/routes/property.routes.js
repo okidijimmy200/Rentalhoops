@@ -32,6 +32,10 @@ router.route('/api/property/searchproperty')
 router.route('/api/property/categories')
     .get(propertyCtrl.listCategories)
 
+//delete property route
+router.route('/api/property/:propertyId')
+    .delete(authCtrl.requireSignin, propertyCtrl.isOwner, propertyCtrl.remove)
+
 router.param('propertyId', propertyCtrl.propertyByID)
 
 router.param('userId', useCtrl.userByID)

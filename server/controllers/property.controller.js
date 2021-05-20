@@ -167,6 +167,19 @@ const searchProperty = async (req, res) => {
      }
  }
 
+ //delete property controller
+ const remove = async (req, res) => {
+     try {
+         let property = req.property
+         let deleteProperty = await Property.remove()
+         res.json(deleteProperty)
+     } catch(err) {
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+
  module.exports =  {
     create,
     read,
@@ -178,5 +191,6 @@ const searchProperty = async (req, res) => {
     photoTetiary,
     list,
     searchProperty,
-    listCategories
+    listCategories,
+    remove
 }
