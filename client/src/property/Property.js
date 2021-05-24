@@ -2,21 +2,17 @@ import React, {useState, useEffect, useRef} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import SearchIcon from './../assets/images/search.svg'
 import ExpandIcon from './../assets/images/expand.svg'
-import BgPic from './../assets/images/house.jpeg'
-import { Link} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import fakeMap from './../assets/images/fake-map2.jpg'
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Paper from '@material-ui/core/Paper'
 import { listAllProperties } from './api-property'
 import Skeleton from './skeleton'
 import Modal from './../components/Modal'
 import { listSearch } from './../store/actions/propertyActions'
 import {useDispatch, useSelector } from 'react-redux'
+import ImageCards from './ImageCards'
+import {SliderData} from './../components/SliderData'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -141,89 +137,7 @@ const useStyles = makeStyles(theme => ({
         top:' 0',
         zIndex:' 0'
       },
-      data: {
-        padding: '14px 15px 20px 10px',
-        fontFamily: 'ConduitMdITCTTMedium',
-        color:' #404040',
-        textAlign: 'left',
-        textTransform: 'uppercase',
-        whiteSpace: 'nowrap',
-        borderTop: '1px solid #d8d8d8',
-        backgroundColor: '#fff',
-      },
-      location: {
-        order: '1',
-        marginBottom: '5px'
-      },
-      neighbourhood: {
-        fontSize:' 20px',
-        lineHeight: '20px',
-        whiteSpace: 'normal',
-        color: '#404040'
-      },
-      Text: {
-        top: '231px',
-        height:' 30%',
-        width: '100%',
-        position: 'absolute'
-      },
-      arrowLeft: {
-        borderRadius: '3px',
-        padding: '16px 32px',
-        fontFamily: 'OpenSans-semibold',
-        fontSize: '18px',
-        border: 'none',
-        cursor: 'pointer',
-        height: '70%',
-        position: 'absolute',
-        left: '3px',
-        top: '2px'
-      },
-      arrowWrap: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        backgroundColor: 'transparent',
-        position: 'absolute',
-        right: '0',
-        left: '0',
-        top: '0',
-        bottom: '0'
-      },
-      arrowRight: {
-        borderRadius: '3px',
-        padding: '16px 32px',
-        fontFamily: 'OpenSans-semibold',
-        fontSize: '18px',
-        border: 'none',
-        cursor: 'pointer',
-        height: '70%',
-        position: 'absolute',
-        top: '2px',
-        right: '2px'
-      },
-      hood: {
-        fontSize: '14px',
-        lineHeight: '18px',
-        color: '#767676'
-      },
-      listInfo: {
-        order: '2',
-        fontSize: '0'
-      },
-      price: {
-        fontSize: '15px',
-        fontWeight: 'bold',
-        lineHeight: '20px',
-        color:' #404040',
-        display:'inline-block'
-      },
-      summary: {
-        fontSize: '14px',
-        lineHeight: '14px',
-        color: '#767676'
-      }
+      
 }))
 
 export default function Property({ match }) {
@@ -313,67 +227,14 @@ export default function Property({ match }) {
                                 {loading  ? <Skeleton /> : 
                                         <Grid container spacing={0}>
                                         {property.map((property, i)=> {
-                                                        return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>
-                                                               <Paper className={classes.paper} component='div'>
-                                                       <Card className={classes.card}>
-                                                       <img className={classes.media}  alt="pic" src={'/api/property/propertyphoto/' + property._id}/>
-                                                       <Button component='div' className={classes.arrowLeft} disableRipple>
-                                                       <div className={classes.arrowWrap}>
-                                                       <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
-                                                       style={{
-                                                           display: 'block ',
-                                                           fill: 'rgb(255, 255, 255)',
-                                                           height: '24px',
-                                                           width: '24px'
-                                                           }}> 
-                                                           <path fillRule="evenodd" d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z">
-                                                           </path> </svg>
-                                                       </div>
-                                                       </Button>
-                                                       <Button className={classes.arrowRight} disableRipple>
-                                                       <div className={classes.arrowWrap}>
-                                                       <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
-                                                           display: 'block',
-                                                           fill:' rgb(255, 255, 255) ',
-                                                           height: '24px', 
-                                                           width: '24px'
-                                                           }}>                    
-                                                       <path fillRule="evenodd" d="M4.293 1.707A1 1 0 1 1 5.708.293l7.995 8a1 1 0 0 1 0 1.414l-7.995 8a1 1 0 1 1-1.415-1.414L11.583 9l-7.29-7.293z"></path>                
-                                                       </svg>
-                                                       </div>
-                                                       </Button>
-                                                       <CardContent className={classes.Text}>
-                                                       <div className={classes.data}>
-                                                       <div className={classes.location}>
-                                                           <Typography  component="p">
-                                                               <span className={classes.neighbourhood}> </span>
-                                                           </Typography>
-                                                           <Typography className={classes.hood}>
-                                                           </Typography>
-                                                       </div>
-                                                       <div className={classes.listInfo}>
-                                                           <Typography className={classes.price}>
-                                                           Shs. {property.price}
-                                                           </Typography>
-                                                           <Typography component='div' className={classes.summary}>
-                                                            BD BA  FAMILY
-                                                           </Typography>
-                                                           
-                                                       </div>
-                                                       </div>
-                                                       </CardContent>
-                           
-                                                       </Card>
-                                                       
-                                                       </Paper>
-                                                               </Grid>
+                                            return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>            
+                                                       <ImageCards property={property} slides={SliderData}/>
+                                                    </Grid>
                                         })}
                                     </Grid>
-                                }
-                        
-                                
-                            </Grid>
-                            <Grid item xs={12} md={4} sm={4}>
+                                }   
+                          </Grid>
+                          <Grid item xs={12} md={4} sm={4}>
                                 <Card className={classes.cardMap}>
                                     <CardMedia
                                     className={classes.mediaMap}
@@ -381,7 +242,7 @@ export default function Property({ match }) {
                                     style={{position: 'fixed'}}
                                     />
                                 </Card>
-                            </Grid>
+                         </Grid>
                     </Grid>
                     
                 </section>

@@ -50,6 +50,10 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  uploadPic: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
 }))
 
 
@@ -133,28 +137,39 @@ export default function NewProduct() {
           <Typography type="headline" component="h2" className={classes.title}>
             New House Upload
           </Typography><br/>
+          <div className={classes.uploadPic}>
           <input accept="image/*" multiple onChange={handleChange('imagePrimary')} className={classes.input} id="icon-button-file" type="file"/>
+          <div>
           <label htmlFor="icon-button-file">
             <Button variant="contained" color="secondary" component="span">
-              Upload Photo
-              <FileUpload/>
-            </Button>
-          </label> <span className={classes.filename}>{values.imagePrimary ? values.imagePrimary.name : ''}</span><br/>
-          <input accept="image/*" multiple onChange={handleChange('imageSecondary')} className={classes.input} id="icon-button-file-1" type="file"/>
-          <label htmlFor="icon-button-file-1">
-            <Button variant="contained" color="secondary" component="span">
-              Upload Photo
-              <FileUpload/>
-            </Button>
-          </label> <span className={classes.filename}>{values.imageSecondary ? values.imageSecondary.name : ''}</span><br/>
-          <input accept="image/*" multiple onChange={handleChange('imageTetiary')} className={classes.input} id="icon-button-file-2" type="file"/>
-          <label htmlFor="icon-button-file-2">
-            <Button variant="contained" color="secondary" component="span">
-              Upload Photo
+              Upload Photo 1
               <FileUpload/>
             </Button>
           </label>
-          <span className={classes.filename}>{values.imageTetiary ? values.imageTetiary.name : ''}</span><br/>
+          <div className={classes.filename}>{values.imagePrimary ? values.imagePrimary.name : ''}</div><br/>
+          </div>
+           <div>
+           <input accept="image/*" multiple onChange={handleChange('imageSecondary')} className={classes.input} id="icon-button-file-1" type="file"/>
+          <label htmlFor="icon-button-file-1">
+            <Button variant="contained" color="secondary" component="span">
+              Upload Photo 2
+              <FileUpload/>
+            </Button>
+          </label>
+          <div className={classes.filename}>{values.imageSecondary ? values.imageSecondary.name : ''}</div><br/>
+           </div>
+          <div>
+          <input accept="image/*" multiple onChange={handleChange('imageTetiary')} className={classes.input} id="icon-button-file-2" type="file"/>
+          <label htmlFor="icon-button-file-2">
+            <Button variant="contained" color="secondary" component="span">
+              Upload Photo 3
+              <FileUpload/>
+            </Button>
+          </label>
+          <div className={classes.filename}>{values.imageTetiary ? values.imageTetiary.name : ''}</div><br/>
+          </div>
+          </div>
+ 
           {/* <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/> */}
           <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} select margin="normal">
                 <MenuItem value="Apartment">Apartment</MenuItem>
