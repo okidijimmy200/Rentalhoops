@@ -72,10 +72,66 @@ const listCategories = async (signal) => {
   }
 }
 
+// notify api
+const like = async (params, credentials, propertyId) => {
+  try {
+    let response = await fetch('/api/property/like', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: JSON.stringify({userId:params.userId, propertyId: propertyId})
+    })
+    return await response.json()
+  } catch(err){
+    console.log(err)
+  }
+}
+
+const unlike = async (params, credentials, propertyId) => {
+  try {
+    let response = await fetch('/api/property/unlike', {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: JSON.stringify({userId:params.userId, propertyId: propertyId})
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+//favourite API /api/property/favourite
+const favourite  = async (params, credentials, propertyId) => {
+  try {
+    let response = await fetch('/api/property/favourite', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: JSON.stringify({userId:params.userId, propertyId: propertyId})
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 export {
     create,
     listByLandlord,
     listAllProperties,
     searchProperty,
-    listCategories
+    listCategories,
+    like,
+    unlike,
+    favourite
 }

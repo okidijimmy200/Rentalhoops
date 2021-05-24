@@ -6,8 +6,7 @@ import auth from './../auth/auth-helper'
 import { listByLandlord} from './../property/api-property'
 import {Redirect} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
-
-import Test from './Test'
+import ImageCard from './ImageCard'
 
 // styling the component
 const useStyles = makeStyles(theme => ({
@@ -54,8 +53,8 @@ export default function LandlordProperty({slides}) {
             <Grid container spacing={4} className={classes.gridRoot}> 
                 {property.map((property, i) => {
                     return <Grid item xs={12} sm={12} md={6} key={i}>
-                      <Test property={property} slides={slides}/>
-                    </Grid>
+                         <ImageCard property={property} slides={slides}/>
+                        </Grid>
                 })}
             </Grid>
         </Paper>

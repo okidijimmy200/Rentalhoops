@@ -29,14 +29,6 @@ const create = (req, res, next) => {
             property.imageTetiary.data = fs.readFileSync(files.imageTetiary.path)
             property.imageTetiary.contentType = files.imageTetiary.type
         }
-        // else if(files.imageSecondary) {
-        //     property.imageSecondary.data = fs.readFileSync(files.imageSecondary.path)
-        //     property.imageSecondary.contentType = files.imageSecondary.type
-        // }
-        // else if (files.imageTetiary) {
-        //     property.imageTetiary.data = fs.readFileSync(files.imageTetiary.path)
-        //     property.imageTetiary.contentType = files.imageTetiary.type
-        // }
         try {
             let result = await property.save()
             res.json(result)
@@ -127,7 +119,7 @@ const photoTetiary = (req, res, next) => {
  //list all the available properties
  const list = async (req, res) => {
      try {
-         let property = await Property.find().select('name location price bedRooms bathRooms familyNumber category')
+         let property = await Property.find().select('name location price bedRooms bathRooms familyNumber category likes')
          res.json(property)
      } catch (err) {
          return res.status(400).json({
@@ -180,7 +172,43 @@ const searchProperty = async (req, res) => {
      }
  }
 
+ const like = async (req, res) => {
+     try {
+         let result = await Property.findByIdAndUpdate(req.body.propertyId, {$push: {likes: req.body.userId}}, {new: true})
+         res.json(result)
+     } catch(err){
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+ //unlike
+ const unlike = async (req, res) => {
+     try {
+         let result = await Property.findByIdAndUpdate(req.body.propertyId, {$pull: {likes: req.body.userId}}, {new: true})
+         res.json(result)
+     }
+     catch(err) {
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+ //get the most favoured buildings based on save history
+ const favourite = async (req, res) => {
+     try {
+         let result = await Property.find().select('likes')
+         res.json(result)
+     }
+     catch(err){
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
  module.exports =  {
+    like,
+    unlike,
     create,
     read,
     propertyByID, 
@@ -192,5 +220,6 @@ const searchProperty = async (req, res) => {
     list,
     searchProperty,
     listCategories,
-    remove
+    remove,
+    favourite
 }

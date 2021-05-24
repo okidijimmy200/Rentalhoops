@@ -32,6 +32,16 @@ router.route('/api/property/searchproperty')
 router.route('/api/property/categories')
     .get(propertyCtrl.listCategories)
 
+//like route
+router.route('/api/property/like')
+    .put(authCtrl.requireSignin, propertyCtrl.like)
+//unlike route
+router.route('/api/property/unlike')
+    .put(authCtrl.requireSignin, propertyCtrl.unlike)
+
+//getting the favourite property
+router.route('/api/property/favourite')
+    .get(propertyCtrl.favourite)
 //delete property route
 router.route('/api/property/:propertyId')
     .delete(authCtrl.requireSignin, propertyCtrl.isOwner, propertyCtrl.remove)

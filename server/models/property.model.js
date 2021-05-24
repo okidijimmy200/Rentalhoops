@@ -43,6 +43,9 @@ const PropertySchema = new mongoose.Schema({
         type: String,
         enum: ['GuluCity', 'MetroplitanGulu']
     },
+    likes: [{
+        type: mongoose.Schema.ObjectId, ref: 'User'
+    }],
     owner:{
         type: mongoose.Schema.ObjectId, ref: 'User'
     }

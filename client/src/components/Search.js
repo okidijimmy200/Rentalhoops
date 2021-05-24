@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 const Search = ({ history }) =>  {
     const classes =useStyles()
     const [values, setValues] = useState({
-        category: '',
+        category: 'GuluCity',
         search: '',
         results: [],
         searched: false,
@@ -99,25 +99,6 @@ const Search = ({ history }) =>  {
         }
     }
 
-    // const search = () => {
-    //     if(values.search.trim()){
-    //         searchProperty({
-    //             //params passed to be searched ie text
-    //             search: values.search || undefined, category: values.category
-    //         }).then((data) => {
-    //             if(data.error) {
-    //                 console.log(data.error)
-    //             } else {
-    //                 setValues({...values, results: data, searched:true})
-    //                 console.log(data)
-    //             }
-    //         })
-    //     }
-    // }
-    //redirect to search page
-    // if (values.searched) {
-    //     <Redirect to={`/search/${values.search}`} component={Property}/>
-    // } 
 
     const enterKey = (event) => {
         if(event.keyCode == 13){
@@ -132,11 +113,7 @@ const Search = ({ history }) =>  {
                     <select className={classes.optionsValue}
                     value={values.category}
                     onChange={handleChange('category')}
-                    // onChange={(e) => setKeyWord(e.target.value) }
-                    // value={searchValue.category}
-
                     >
-                        <option >Region</option>
                         {categories.map(item => (
                              <option key={item}>{item}</option>
                         ))}
@@ -149,12 +126,10 @@ const Search = ({ history }) =>  {
                      placeholder='Enter a neighbourhood, address or agent'
                      onChange={(e) => setKeyWord(e.target.value)}
                      />
-                    
-                    </form>
+            </form>
                    
                     </div>
                     <div>
-                    {/* <Property property={values.results} searched={values.searched}/> */}
                     </div>
         </>
     )
