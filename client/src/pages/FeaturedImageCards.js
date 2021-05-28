@@ -6,27 +6,23 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { SliderData } from '../components/SliderData'
-import Test from './Test'
-import auth from './../auth/auth-helper'
+import Test from '../property/Test'
+import auth from '../auth/auth-helper'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import IconButton from '@material-ui/core/IconButton'
-import {  Link } from 'react-router-dom'
+import {   Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({ 
-  button: {
-    margin: theme.spacing(1),
-   },
     paper: {
         // padding: theme.spacing(2),
         height: '355px',
-        width: '400px',
+        width: 'auto',
         textAlign: 'center',
         color: theme.palette.text.secondary,
         display: 'flex',
         flexDirection: 'column',
         border: 'none',
-        boxShadow: '0px 0px 0px 0px',
-        margin: 'auto'
+        boxShadow: '0px 0px 0px 0px'
       },
       card: {
         height: '355px',
@@ -47,6 +43,7 @@ const useStyles = makeStyles(theme => ({
         boxShadow: '0px 0px 0px 0px'
       },
       media:{
+        // backgroundImage: `url(${bgPic2})`,
         width:' 100%',
         height: '70%',
         backgroundSize: 'cover',
@@ -121,7 +118,9 @@ const useStyles = makeStyles(theme => ({
       hood: {
         fontSize: '14px',
         lineHeight: '18px',
-        color: '#767676'
+        color: '#767676',
+        display: 'flex',
+        justifyContent: 'space-between'
       },
       listInfo: {
         order: '2',
@@ -147,7 +146,7 @@ const useStyles = makeStyles(theme => ({
        },
 }))
 
-export default function ImageCards( {slides , property}) {
+export default function FeaturedImageCards({ slides , property}) {
     const classes = useStyles()
     const [current, setCurrent] = useState(0)
     
@@ -170,13 +169,11 @@ export default function ImageCards( {slides , property}) {
       if (!Array.isArray(slides) || slides.length <= 0){
         return null
       }
-      // const likeSign = () => {
-      //       return <Redirect to='/signin'/>
-      // }
+   
     return (
         <>
-        <Paper className={classes.paper} component='div'>
-            <Card className={classes.card}>
+           <Paper className={classes.paper} component='div'>
+                <Card className={classes.card}>
                 {SliderData.map((slide, index) => {
                             return(
                               <>
@@ -188,60 +185,71 @@ export default function ImageCards( {slides , property}) {
                              
                                 )
                           })}
-                                                       
-                        <Button component='div' className={classes.arrowLeft} disableRipple onClick={prevSlide}>
-                        <div className={classes.arrowWrap}>
-                        <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
-                        style={{display: 'block ',fill: 'rgb(255, 255, 255)',height: '24px',width: '24px'}}><path fillRule="evenodd" d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z"></path> </svg>
-                        </div>
-                        </Button>
-                        <Button className={classes.arrowRight} disableRipple onClick={nextSlide}>
-                        <div className={classes.arrowWrap}>
-                        <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
-                            display: 'block',
-                            fill:' rgb(255, 255, 255) ',
-                            height: '24px', 
-                            width: '24px'
-                            }}>                    
-                        <path fillRule="evenodd" d="M4.293 1.707A1 1 0 1 1 5.708.293l7.995 8a1 1 0 0 1 0 1.414l-7.995 8a1 1 0 1 1-1.415-1.414L11.583 9l-7.29-7.293z"></path>                
-                        </svg>
-                        </div>
-                        </Button>
-                        <CardContent className={classes.Text}>
-                        <div className={classes.data}>
-                        <div className={classes.location}>
-                            <Typography  component="p">
-                                <span className={classes.neighbourhood}> {property.name} {property.regionCategory}</span>
-                            </Typography>
-                            <Typography className={classes.hood}>
-                            <span style={{marginRight: '212px'}}>{property.location}</span>
-                            {auth.isAuthenticated() && (
+                               
+                <Button component='div' className={classes.arrowLeft} disableRipple onClick={prevSlide}>
+                  <div className={classes.arrowWrap}>
+                  <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Previous" focusable="false" 
+                  style={{
+                    display: 'block ',
+                    fill: 'rgb(255, 255, 255)',
+                    height: '24px',
+                    width: '24px'
+                    }}> 
+                    <path fillRule="evenodd" d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z">
+                    </path> </svg>
+                  </div>
+                </Button>
+                <Button className={classes.arrowRight} disableRipple onClick={nextSlide}>
+                  <div className={classes.arrowWrap}>
+                  <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
+                    display: 'block',
+                    fill:' rgb(255, 255, 255) ',
+                    height: '24px', 
+                    width: '24px'
+                    }}>                    
+                  <path fillRule="evenodd" d="M4.293 1.707A1 1 0 1 1 5.708.293l7.995 8a1 1 0 0 1 0 1.414l-7.995 8a1 1 0 1 1-1.415-1.414L11.583 9l-7.29-7.293z"></path>                
+                  </svg>
+                  </div>
+                </Button>
+                <CardContent className={classes.Text}>
+                <div className={classes.data}>
+                  <div className={classes.location}>
+                      <Typography  component="p">
+                          <span className={classes.neighbourhood}>{property.name} {property.regionCategory}</span>
+                      </Typography>
+                      <Typography className={classes.hood}>
+                      <span >{property.location}</span>
+                      {auth.isAuthenticated() && (
+                        <>
+                        {/* <Button onClick={addToCart}>Add to Cart</Button> */}
                               <Test property={property} />
+                              </>
                             )}
                             {!auth.isAuthenticated() && (
                               <IconButton  className={classes.button} aria-label="Like" color="secondary" disabled>
                               <FavoriteBorderIcon />
                             </IconButton>
-                            )}                    
-                            </Typography>
-                            
-                        </div>
-                        <div className={classes.listInfo}>
-                            <Typography className={classes.price}>
-                            Shs. {property.price}
-                            </Typography>
-                            <Typography component='div' className={classes.summary}>
-                           {property.bedRooms} BD {property.bathRooms}BA  {property.familyNumber}FAMILY
-                            </Typography>
-                        </div>
-                        </div>
-                        </CardContent>
-
-                        </Card>
-                        
-                        </Paper>
-
-        
+                              
+                            )}
+                      </Typography>
+                      
+                      
+                  </div>
+                  <div className={classes.listInfo}>
+                    <Typography className={classes.price}>
+                    Shs.{property.price}
+                    </Typography>
+                    <Typography component='div' className={classes.summary}>
+                    {property.bedRooms} BD {property.bathRooms}BA  {property.familyNumber}FAMILY
+                    </Typography>
+                      
+                  </div>
+                </div>
+                </CardContent>
+                
+                </Card>
+                  
+          </Paper> 
         </>
     )
 }

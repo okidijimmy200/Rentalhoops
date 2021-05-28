@@ -7,7 +7,6 @@ const cors = require('cors')
 const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
-const uploadRoutes = require('./routes/upload.routes')
 const propertyRoutes = require('./routes/property.routes')
 const favicon = require('express-favicon');
 
@@ -36,7 +35,6 @@ app.use(cors())
 app.use('/', userRoutes)
 app.use('/', authRoutes)
 app.use('/', propertyRoutes)
-app.use('/', uploadRoutes)
 
 // Catch unauthorised errors
 app.use((err, req, res, next) => {

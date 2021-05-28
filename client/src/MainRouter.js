@@ -11,6 +11,8 @@ import Login from './accounts/Login'
 import NewProduct from './property/NewProperty'
 import RentalProperty from './property/RentalProperty'
 import Property from './property/Property'
+import DetailProperty from './property/DetailProperty'
+import PropertySaved from './property/SavedProperty'
 
 const MainRouter = () => {
     return (<div>
@@ -22,6 +24,8 @@ const MainRouter = () => {
         <Route path="/users" component={Users}/>
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
+        <PrivateRoute exact path='/saved/:userId' component={PropertySaved}/>
+        <Route exact path='/property/:id' component={DetailProperty} />
         <PrivateRoute path='/landlord/upload' component={NewProduct} />
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>

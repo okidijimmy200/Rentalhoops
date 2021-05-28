@@ -108,16 +108,15 @@ const unlike = async (params, credentials, propertyId) => {
 }
 
 //favourite API /api/property/favourite
-const favourite  = async (params, credentials, propertyId) => {
+const favourite  = async (signal) => {
   try {
     let response = await fetch('/api/property/favourite', {
       method: 'GET',
+      signal: signal,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + credentials.t
-      },
-      body: JSON.stringify({userId:params.userId, propertyId: propertyId})
+        'Content-Type': 'application/json'
+      }  
     })
     return await response.json()
   } catch(err) {
@@ -125,6 +124,34 @@ const favourite  = async (params, credentials, propertyId) => {
   }
 }
 
+const readPropertyViews = async(params, signal) => {
+  try {
+    let response = await fetch('/api/property/' + params.propertyId, {
+      method: 'GET',
+      signal: signal
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+const SavedProperty = async (params, credentials, signal) => {
+  try {
+    let response = await fetch('/api/likescount/' + params.userId, {
+      method: 'GET',
+      signal: signal,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      }
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
 export {
     create,
     listByLandlord,
@@ -133,5 +160,7 @@ export {
     listCategories,
     like,
     unlike,
-    favourite
+    favourite,
+    readPropertyViews,
+    SavedProperty
 }

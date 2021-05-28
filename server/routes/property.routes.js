@@ -46,6 +46,14 @@ router.route('/api/property/favourite')
 router.route('/api/property/:propertyId')
     .delete(authCtrl.requireSignin, propertyCtrl.isOwner, propertyCtrl.remove)
 
+//readpropertyviews controller
+router.route('/api/property/:propertyId')
+    .get(propertyCtrl.incrementViews, propertyCtrl.readPropertyViews)
+
+//likes count
+router.route('/api/likescount/:userId')
+    .get(authCtrl.requireSignin, propertyCtrl.cartLikes)
+
 router.param('propertyId', propertyCtrl.propertyByID)
 
 router.param('userId', useCtrl.userByID)

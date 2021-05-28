@@ -48,7 +48,9 @@ const PropertySchema = new mongoose.Schema({
     }],
     owner:{
         type: mongoose.Schema.ObjectId, ref: 'User'
-    }
-})
+    },
+    views: {type: Number, default: 0}
+}
+)
 
 module.exports =  mongoose.model('Property', PropertySchema)

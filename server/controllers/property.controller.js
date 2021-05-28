@@ -90,6 +90,7 @@ const isOwner = (req, res, next) => {
      }).populate('owner', '_id name')
  } 
 
+//  const listPropertyLikedByUser
  //photo controller
  const photoPrimary = (req, res, next) => {
      if(req.property.imagePrimary.data) {
@@ -194,11 +195,27 @@ const searchProperty = async (req, res) => {
          })
      }
  }
+ //increment views
+ const incrementViews = async (req, res, next) => {
+     try {
+         await Property.findByIdAndUpdate(req.property._id, {$inc: {"views": 1}}, {new: true}).exec()
+         next()
+     } catch(err) {
+         return res.status(400).json({
+             error: errorHandler.getErrorMessage(err)
+         })
+     }
+ }
+
+
  //get the most favoured buildings based on save history
  const favourite = async (req, res) => {
      try {
-         let result = await Property.find().select('likes')
-         res.json(result)
+        let result = await Property.find({}).limit(3)
+        .select('name location views price bedRooms bathRooms familyNumber category likes')
+        .sort('-views')
+        .exec()
+        res.json(result) 
      }
      catch(err){
          return res.status(400).json({
@@ -206,11 +223,35 @@ const searchProperty = async (req, res) => {
          })
      }
  }
+
+ //readProperty controller
+ const readPropertyViews = (req, res) => {
+    req.property.imagePrimary  = undefined
+    req.property.imageSecondary  = undefined
+    req.property.imageTetiary  = undefined
+     return res.json(req.property)
+ }
+
+ const cartLikes = async (req, res) => {
+     try {
+       let result = await Property.find({likes: req.profile._id})
+       return res.json(result)
+     }
+     catch(err){
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+    
+ }
  module.exports =  {
     like,
+    cartLikes,
     unlike,
     create,
+    incrementViews,
     read,
+    readPropertyViews,
     propertyByID, 
     isOwner,
     listByLandlord, 

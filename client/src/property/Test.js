@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { like, unlike, favourite } from './api-property'
+import { like, unlike} from './api-property'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import IconButton from '@material-ui/core/IconButton'
@@ -28,7 +28,6 @@ export default function Test(props) {
       const [values, setValues] = useState({
         like: checkLike(props.property.likes),
         likes: props.property.likes.length,
-        favourite: props.property.favourite
   
       })
   

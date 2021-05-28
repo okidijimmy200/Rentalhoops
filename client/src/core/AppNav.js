@@ -29,8 +29,6 @@ export default function AppBarIntegration() {
             <AppBar position='static' className={classes.appBar} >
                 <Tabs value={value} onChange={onChange}>
                     <Tab label="Rent" />
-                    <Tab label="Buy" />
-                    <Tab label="Sell" />
                 </Tabs>
 
             </AppBar>
@@ -40,16 +38,6 @@ export default function AppBarIntegration() {
                    
                     
             )}
-            {/* {value === 1 && (
-                <Typography component='div' className={classes.tabContent}>
-                    Item two
-                </Typography>
-            )}
-            {value === 3 && (
-                <Typography component='div' className={classes.tabContent}>
-                    Item three
-                </Typography>
-            )} */}
         </div>
     )
 }
