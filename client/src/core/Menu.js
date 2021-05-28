@@ -91,7 +91,7 @@ const Menu = ({history}) => {
         {
           !auth.isAuthenticated() && (<span>
             <Link to="/login" style={{textDecoration: 'none'}}>
-              <Button style={isActive(history, "/signup")} className={classes.capitalizeText} p={2}>Log in or Sign Up              </Button>
+              <Button style={isActive(history, "/signup")} className={classes.capitalizeText} p={2}>Log in or Sign Up  </Button>
             </Link>
           </span>)
         }
