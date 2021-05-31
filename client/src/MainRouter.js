@@ -25,7 +25,7 @@ const MainRouter = () => {
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
         <PrivateRoute exact path='/saved/:userId' component={PropertySaved}/>
-        <Route exact path='/property/:id' component={DetailProperty} />
+        <Route exact path='/property/:propertyId' component={DetailProperty} />
         <PrivateRoute path='/landlord/upload' component={NewProduct} />
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>

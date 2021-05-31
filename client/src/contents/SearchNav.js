@@ -118,9 +118,15 @@ export default function SearchNav({count, match}) {
               <li className={classes.filter} onClick={() => setBedrooms(!bedrooms)} >Bedrooms</li>                        
               {/* <li className={classes.filter} >More Filters</li>     */}
                         <li className={classes.list}>
-                            <Link to={'/saved/' + auth.isAuthenticated().user._id}>
-                            <button className={classes.saveFilter} >Save</button>
-                            </Link>
+                            {!auth.isAuthenticated() && (
+                                 <button className={classes.saveFilter} >Save</button>
+                            )}
+                            {auth.isAuthenticated() && (
+                                      <Link to={'/saved/' + auth.isAuthenticated().user._id}>
+                                      <button className={classes.saveFilter} >Save</button>
+                                      </Link>
+                            ) }
+                          
                              
                                              
                         <button className={classes.saveFilter} style={{color: '#404040'}}>Clear</button>            

@@ -9,6 +9,7 @@ import Skeleton from './skeleton'
 import ImageCards from './ImageCards'
 import {SliderData} from './../components/SliderData'
 import SearchNav from './../contents/SearchNav'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     cardMap: {
@@ -58,7 +59,9 @@ export default function RentalProperty(props) {
                                         <Grid container spacing={0}>
                                         {properties.map((property, i) => {
                                             return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>
+                                                <Link to={"/property/"+property._id} style={{zIndex: -10}}>
                                                     <ImageCards property={property} slides={SliderData}/>
+                                                    </Link>
                                                     </Grid>
                                         })}
                                     </Grid>

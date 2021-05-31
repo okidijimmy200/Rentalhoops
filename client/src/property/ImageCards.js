@@ -116,7 +116,8 @@ const useStyles = makeStyles(theme => ({
         height: '70%',
         position: 'absolute',
         top: '2px',
-        right: '2px'
+        right: '2px',
+        zIndex: 100
       },
       hood: {
         fontSize: '14px',
