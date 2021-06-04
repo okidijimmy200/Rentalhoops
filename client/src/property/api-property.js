@@ -124,7 +124,7 @@ const favourite  = async (signal) => {
   }
 }
 
-const readPropertyViews = async(params, signal) => {
+const readPropertyViews = async (params, signal) => {
   try {
     let response = await fetch('/api/property/' + params.propertyId, {
       method: 'GET',

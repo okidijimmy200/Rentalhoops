@@ -47,7 +47,7 @@ const create = (req, res, next) => {
 
 const propertyByID = async (req, res, next, id) => {
     try {
-        let property = await Property.findById(id).populate('owner', '_id name').exec()
+        let property = await Property.findById(id).populate('owner', '_id name email').exec()
         if (!property)
             return res.status('400').json({
                 error: 'Property not found'
@@ -229,7 +229,7 @@ const searchProperty = async (req, res) => {
     req.property.imagePrimary  = undefined
     req.property.imageSecondary  = undefined
     req.property.imageTetiary  = undefined
-     return res.json(req.property)
+    return res.json(req.property)
  }
 
  const cartLikes = async (req, res) => {

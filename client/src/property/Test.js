@@ -28,10 +28,10 @@ export default function Test(props) {
       const [values, setValues] = useState({
         like: checkLike(props.property.likes),
         likes: props.property.likes.length,
-  
       })
   
-      const clickLike = () => {
+      const clickLike = (e) => {
+        e.preventDefault()
         let callApi = values.like ? unlike : like 
         callApi({
           userId: jwt.user._id
@@ -41,7 +41,6 @@ export default function Test(props) {
           if (data.error) {
             console.log(data.error)
           } else {
-              console.log(data)
             setValues({ ...values, like: !values.like, likes: data.likes.length})
           }
         })

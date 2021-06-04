@@ -152,7 +152,8 @@ export default function FeaturedImageCards({ slides , property}) {
     
     const length = slides.length;
 
-    const nextSlide = () => {
+    const nextSlide = (e) => {
+      e.preventDefault()
         //  console.log('event.currentTarget.dataset.id', event.currentTarget.dataset.id);
         if (current ===  length -1 ) {
           setCurrent(0)
@@ -162,7 +163,8 @@ export default function FeaturedImageCards({ slides , property}) {
         }
       }
   
-      const prevSlide = () => {
+      const prevSlide = (e) => {
+        e.preventDefault()
         setCurrent(current === 0 ? length - 1 : current - 1);
       }
   

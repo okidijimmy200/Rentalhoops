@@ -88,8 +88,8 @@ const Search = ({ history }) =>  {
         }
     }, [])
 
-    const search = (e) => {
-        e.preventDefault()
+    const search = () => {
+        // e.preventDefault()
         if (keyword.trim() && values.category) {
             history.push(`/search/${keyword}&${values.category}`)
         

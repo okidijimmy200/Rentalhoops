@@ -74,7 +74,8 @@ export default function Featured ({match}){
     <Container spacing={4}>
       {property.map((property, i) => {
         return <Item key={i}>
-              <FeaturedImageCards property={property} slides={SliderData} />
+          <Link to={"/property/"+property._id} style={{zIndex: -10, position: 'relative'}}>
+              <FeaturedImageCards property={property} slides={SliderData} /></Link>
         </Item>
       })}
         

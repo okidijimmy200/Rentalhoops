@@ -117,7 +117,6 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         top: '2px',
         right: '2px',
-        zIndex: 100
       },
       hood: {
         fontSize: '14px',
@@ -154,8 +153,8 @@ export default function ImageCards( {slides , property}) {
     
     const length = slides.length;
 
-    const nextSlide = () => {
-        //  console.log('event.currentTarget.dataset.id', event.currentTarget.dataset.id);
+    const nextSlide = (e) => {
+      e.preventDefault()
         if (current ===  length -1 ) {
           setCurrent(0)
         }
@@ -164,16 +163,14 @@ export default function ImageCards( {slides , property}) {
         }
       }
   
-      const prevSlide = () => {
+      const prevSlide = (e) => {
+        e.preventDefault()
         setCurrent(current === 0 ? length - 1 : current - 1);
       }
   
       if (!Array.isArray(slides) || slides.length <= 0){
         return null
       }
-      // const likeSign = () => {
-      //       return <Redirect to='/signin'/>
-      // }
     return (
         <>
         <Paper className={classes.paper} component='div'>
@@ -232,7 +229,7 @@ export default function ImageCards( {slides , property}) {
                             Shs. {property.price}
                             </Typography>
                             <Typography component='div' className={classes.summary}>
-                           {property.bedRooms} BD {property.bathRooms}BA  {property.familyNumber}FAMILY
+                           {property.bedRooms} BD {property.bathRooms}BA  {property.familyNumber} FAMILY
                             </Typography>
                         </div>
                         </div>
