@@ -2,10 +2,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { propertySearchReducer } from './reducers/propertyReducer'
+import { propertySearchReducer, roomSearchReducer } from './reducers/propertyReducer'
 
 const reducer = combineReducers({
     propertySearch: propertySearchReducer,
+    roomSearch: roomSearchReducer
 })
 
 const initialState = {}

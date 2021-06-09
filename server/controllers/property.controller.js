@@ -1,10 +1,7 @@
 const Property = require('../models/property.model')
 const errorHandler = require('../helpers/dbErrorHandler')
 const formidable = require('formidable')
-// const extend = require('lodash/extend')
 const fs = require('fs')
-const multer = require('multer')
-const AppError = require('./../utils/appError')
 
 // creating a form
 const create = (req, res, next) => {
@@ -137,7 +134,7 @@ const searchProperty = async (req, res) => {
         keyword.category = req.query.category
 
     try {
-        let property = await Property.find(keyword).populate('owner', '_id name').select('-image').exec()
+        let property = await Property.find(keyword).populate('owner', '_id name').select('-imagePrimary -imageSecondary -imageTetiary').exec()
         res.json(property)
     } 
     
@@ -148,6 +145,22 @@ const searchProperty = async (req, res) => {
     }
 }
 
+//search property according to roomSIze
+const roomSearch = async (req, res) => {
+    const query = {}
+    if (req.query.query)
+        query.bedRooms = req.query.query
+    
+    try {
+        let property = await Property.find(query).populate('owner', '_id name').select('-imagePrimary -imageSecondary -imageTetiary').exec()
+        res.json(property)
+    } 
+    catch(err){
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+          })
+    }
+}
 
  const listCategories = async (req, res) => {
      try {
@@ -262,5 +275,6 @@ const searchProperty = async (req, res) => {
     searchProperty,
     listCategories,
     remove,
-    favourite
+    favourite,
+    roomSearch
 }

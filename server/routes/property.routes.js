@@ -28,6 +28,10 @@ router.route('/api/property/allproperty')
 router.route('/api/property/searchproperty')
     .get(propertyCtrl.searchProperty)
 
+
+//search property according to roomNumber
+router.route('/api/property/roomsearch')
+    .get(propertyCtrl.roomSearch)
 //router for searching according to categories
 router.route('/api/property/categories')
     .get(propertyCtrl.listCategories)

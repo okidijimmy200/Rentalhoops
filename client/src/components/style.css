@@ -13,3 +13,16 @@
 .makeStyles-swiperWrapper-10 {
     overflow: hidden;
 }
+
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#000; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+a { color: inherit; } 

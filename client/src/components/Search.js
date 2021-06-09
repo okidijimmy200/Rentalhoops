@@ -99,13 +99,6 @@ const Search = ({ history }) =>  {
         }
     }
 
-
-    const enterKey = (event) => {
-        if(event.keyCode == 13){
-            event.preventDefault()
-            search()
-        }
-    }
     return (
         <>
         <div className={classes.main} >

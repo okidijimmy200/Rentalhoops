@@ -20,6 +20,7 @@ const MainRouter = () => {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route  exact path="/search/:keyword" component={Property} />
+        <Route  exact path="/search/:query" component={Property} />
         <Route exact path="/rent" component={RentalProperty} />
         <Route path="/users" component={Users}/>
         <Route exact path='/signup' component={Signup} />

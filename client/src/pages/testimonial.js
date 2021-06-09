@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'ConduitMdITCTTMedium'
   },
   testimonial: {
-    margin: '60px 0 40px 0',
+    margin: '60px 0 0 0',
     display: 'flex'
   },
   text: {
