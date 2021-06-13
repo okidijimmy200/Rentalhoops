@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { searchPrice } from './../property/api-property'
+const queryString = require('query-string');
 
 const useStyles = makeStyles((theme) => ({
     textSearch: {
@@ -26,25 +28,88 @@ const useStyles = makeStyles((theme) => ({
       outlineStyle: 'initial',
       outlineWidth: '0'
     },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #fff',
+      boxShadow: theme.shadows[5],
+      // padding: theme.spacing(2, 4, 3),
+      width:'40vw',
+      height: 'auto',
+      margin: '0 auto',
+      padding: '40px 20px 20px 20px',
+      backgroundColor: '#fff',
+      zIndex: 11
+    },
 }))
 
-export default function ListPrice() {
+export default function ListPrice({history}) {
     const classes = useStyles()
+    const [priceMin, setpriceMin] = useState('')
+    const [priceMax, setpriceMax] = useState('')
+
+    const search = (e) => {
+      e.preventDefault()
+      if (priceMin.trim() && priceMax.trim()) {
+        const query = queryString.stringify({priceMax,priceMin })
+          history.push(`/search/price/${query}`)
+      }
+      else {
+          history.push('/')
+      }
+  }
+    // const [values, setValues] = useState({
+    //   priceMax: '',
+    //   priceMin: '',
+    //   results: [],
+    //   searched: false
+    // })
+
+    // const handleChange = name => event => {
+    //   setValues({
+    //     ...values, [name]: event.target.value,
+    //   })
+    //   console.log(event.target.value)
+    // }
+
+    // const search = (e) => {
+    //   e.preventDefault()
+    //   if(values.priceMin) {
+    //     searchPrice({
+    //       priceMin: values.priceMin || undefined, priceMax: values.priceMax
+    //     }).then((data) => {
+    //       if (data.error)  {
+    //         console.log(data.error)
+    //       } else {
+    //         setValues({...values, results: data, searched: true})
+    //         console.log(data)
+    //       }
+    //     }) 
+    //   }
+    // }
+
     return (
         <>
-           <div className={classes.filterSection}>   
+        <div className={classes.paper}>
+           <form className={classes.filterSection} onSubmit={search} >   
                   <h2>PRICE</h2>    
                  <div style={{display: 'flex'}}>                
                  <div className={classes.priceInline}>                         
                  <span>Min Price</span>                          
-               <div class="filterInput">                         
-               <input type="text" placeholder="ex. shs:100K" className={classes.inputText}/>                           
+               <div className="filterInput">                         
+               <input 
+               onChange={(e) => setpriceMin(e.target.value)}  type="text" placeholder="ex. shs:100K" className={classes.inputText}/>                           
               </div>  </div>                        
-               <div lassName={classes.priceInline} >              
+               <div className={classes.priceInline} >              
                   <span>Max Price</span>                         
-               <div class="filterInput">                       
-                    <input type="text" placeholder="ex. shs:2M" className={classes.inputText}/>   
-                  </div> </div> </div>   </div> 
+               <div className="filterInput">                       
+                    <input
+                    onChange={(e) => setpriceMax(e.target.value)}
+                    type="text" placeholder="ex. shs:2M" className={classes.inputText}/>   
+                  </div> </div>
+                   </div>  
+                   <button >submit</button>
+                   </form> 
+                   </div>
         </>
     )
 }

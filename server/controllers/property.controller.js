@@ -146,11 +146,11 @@ const searchProperty = async (req, res) => {
 }
 
 //search property according to roomSIze
-const roomSearch = async (req, res) => {
+const priceSearch = async (req, res) => {
     const query = {}
-    if (req.query.query)
-        query.bedRooms = req.query.query
-    
+    if (req.query.priceMin && req.query.priceMax)
+        query.price = {'$gte':req.query.priceMin, '$lte': req.query.priceMax}
+
     try {
         let property = await Property.find(query).populate('owner', '_id name').select('-imagePrimary -imageSecondary -imageTetiary').exec()
         res.json(property)
@@ -276,5 +276,5 @@ const roomSearch = async (req, res) => {
     listCategories,
     remove,
     favourite,
-    roomSearch
+    priceSearch
 }

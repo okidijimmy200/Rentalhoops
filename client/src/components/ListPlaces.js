@@ -37,22 +37,22 @@ export default function ListPlaces() {
   <>
         <div className={classes.neighborhoodFilter}>     
             <ul className={classes.leftAligned}>    
-            <a href='/search/layibi'> 
+            <Link to='/search/category=GuluCity&keyword=layibi'> 
                 <li className={classes.neighbourList}>   
-                <span>Layibi</span></li>  </a> 
-                <a href='/search/bardege' >
+                <span>Layibi</span></li>  </Link> 
+                <Link to='/search/category=GuluCity&keyword=bardege' >
                 <li className={classes.neighbourList}>  
                 
                 <span >Bar De Ge</span>     
-                    </li></a>   
-                <a href='/search/pece'>         
+                    </li></Link>   
+                <Link to='/search/category=GuluCity&keyword=pece'>         
                     <li className={classes.neighbourList}> 
                 <span >Pece</span>     
-                     </li>  </a> 
-                <a href='/search/laroo'>            
+                     </li>  </Link> 
+                <Link to='/search/category=GuluCity&keyword=laroo'>            
                     <li className={classes.neighbourList}> 
                 <span >Laroo</span> </li>   
-                 </a>   
+                 </Link>   
             </ul>
     </div> 
 </>

@@ -10,6 +10,7 @@ import dotsPic from './../assets/images/3dots.svg'
 import FeaturedList from '../pages/featuredList'
 import Testimonial from '../pages/testimonial'
 import QnA from './../pages/QnA'
+import Footer from '../contents/Footer/Footer'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,6 +108,7 @@ export default function Home(){
         <FeaturedList />
         <Testimonial />
         <QnA />
+        <Footer />
         </>
     )
 }

@@ -1,0 +1,73 @@
+.wrap.footer {
+    background-image: url(../../assets/images/dark-pattern.png);
+    background-repeat: repeat;
+
+}
+
+ #footer {
+    margin: auto;
+    padding: 0;
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff;
+}
+
+.full-width {
+    width: 75%;
+    max-width: 1080px;
+    padding: 0;
+    display: block;
+}
+
+#footer .sections {
+    padding: 0;
+}
+
+#footer .sections ul {
+    width: auto;
+    margin-right: 60px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#footer .sections ul {
+    padding-bottom: 30px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+#legal {
+    margin: auto;
+    padding: 10px 0;
+}
+
+#legal {
+    font-size: 14px;
+    color: #fff;
+}
+
+.top-pad {
+    padding-top: 70px;
+}
+
+.bottom-small-pad {
+    padding-bottom: 30px;
+}
+
+#footer .sections ul li.title {
+    padding: 0 0 10px 0;
+    font-family: 'ConduitMdITCTTMedium',sans-serif;
+    font-size: 18px;
+    color: #BA265D;
+    display: block;
+}

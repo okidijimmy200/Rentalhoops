@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { searchProperty, listCategories } from './../property/api-property'
 import { Redirect } from 'react-router-dom'
 import Property from './../property/Property'
+const queryString = require('query-string');
 
 const useStyles = makeStyles(theme => ({
     homeSBRight:{
@@ -62,7 +63,7 @@ const Search = ({ history }) =>  {
         searched: false,
     })
     const [categories, setCategories] = useState([])
-    const [keyword, setKeyWord] = useState('')
+    const [keyword, setkeyword] = useState('')
 
     const handleChange = name => event => {
         setValues({
@@ -88,10 +89,11 @@ const Search = ({ history }) =>  {
         }
     }, [])
 
-    const search = () => {
-        // e.preventDefault()
+    const search = (e) => {
+        e.preventDefault()
         if (keyword.trim() && values.category) {
-            history.push(`/search/${keyword}&${values.category}`)
+            const keywordSearch = queryString.stringify({keyword, category: values.category})
+            history.push(`/search/${keywordSearch}`)
         
         }
         else {
@@ -117,7 +119,7 @@ const Search = ({ history }) =>  {
              <form className={classes.homeSBRight} onSubmit={search}>
                     <input type='text' className={classes.InputName}
                      placeholder='Enter a neighbourhood, address or agent'
-                     onChange={(e) => setKeyWord(e.target.value)}
+                     onChange={(e) => setkeyword(e.target.value)}
                      />
             </form>
                    

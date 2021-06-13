@@ -4,6 +4,7 @@ import {readPropertyViews} from './api-property'
 import { SliderData } from '../components/SliderData'
 import DetailLandlordProfile from './../components/DetailLandlordProfile'
 import DetailListings from '../components/DetailListings'
+import Footer from '../contents/Footer/Footer'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -89,10 +90,15 @@ export default function DetailProperty({ match }) {
                                 )
                           })}
                 </div>
-             </div>        
+             </div>   
+             <DetailListings property={property}/>
+            < DetailLandlordProfile  property={property}/>
+            <div  style={{marginTop: '40px'}}>
+            <Footer />
+            </div>
+         
              </div>
-           <DetailListings property={property}/>
-         < DetailLandlordProfile  property={property}/>
+           
 
         </>
     )

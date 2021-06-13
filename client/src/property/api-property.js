@@ -152,6 +152,18 @@ const SavedProperty = async (params, credentials, signal) => {
     console.log(err)
   }
 }
+
+const searchPrice = async (params, signal) => {
+  const query = queryString.stringify(params)
+  try {
+    let response = await fetch('/api/property/pricesearch?'+query, {
+      method: 'GET',
+    })
+    return response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
 export {
     create,
     listByLandlord,
@@ -162,5 +174,6 @@ export {
     unlike,
     favourite,
     readPropertyViews,
-    SavedProperty
+    SavedProperty,
+    searchPrice
 }

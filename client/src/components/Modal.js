@@ -9,7 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Search from './Search'
 import ListPlaces from './ListPlaces'
 import ListPrice from './ListPrice'
-
 import { Route} from 'react-router-dom'
 import './style.css'
 
@@ -103,8 +102,8 @@ const Fade = React.forwardRef(function Fade(props, ref) {
 });
 
 Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
+    // children: PropTypes.element,
+    // in: PropTypes.bool.isRequired,
     onEnter: PropTypes.func,
     onExited: PropTypes.func
 }
@@ -136,9 +135,9 @@ export default function ModalFun(props) {
         <Route render={({history}) => <Search history={history}/>}/>
                     )}
             {props.price && (
-              <div className={classes.paper}>
-                 <ListPrice />   
-                </div>
+              
+                 <Route render={({history}) => <ListPrice history={history}/>}/> 
+              
                           
                     )}
                     {props.bedrooms && (

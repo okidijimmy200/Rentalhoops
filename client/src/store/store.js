@@ -6,7 +6,7 @@ import { propertySearchReducer, roomSearchReducer } from './reducers/propertyRed
 
 const reducer = combineReducers({
     propertySearch: propertySearchReducer,
-    roomSearch: roomSearchReducer
+    roomSearchList: roomSearchReducer
 })
 
 const initialState = {}
