@@ -2,6 +2,11 @@ import {
     PROPERTY_SEARCH_SUCCESS, 
     PROPERTY_SEARCH_REQUEST, 
     PROPERTY_SEARCH_FAIL,
+
+    PRICE_SEARCH_FAIL,
+    PRICE_SEARCH_REQUEST,
+    PRICE_SEARCH_SUCCESS,
+
     ROOM_SEARCH_FAIL,
     ROOM_SEARCH_REQUEST,
     ROOM_SEARCH_SUCCESS
@@ -21,15 +26,29 @@ export const propertySearchReducer = (state = { property: []}, action) => {
     }
 } 
 
-export const roomSearchReducer = (state = { propertyRoom: []}, action) => {
+export const priceSearchReducer = (state = { propertyPrice: []}, action) => {
     switch (action.type) {
-        case ROOM_SEARCH_REQUEST:
-            return { propertyRoom: [] }
-        case ROOM_SEARCH_SUCCESS:
-            return {  propertyRoom: action.payload }
-        case ROOM_SEARCH_FAIL:
+        case PRICE_SEARCH_REQUEST:
+            return { propertyPrice: [] }
+        case PRICE_SEARCH_SUCCESS:
+            return {  propertyPrice: action.payload }
+        case PRICE_SEARCH_FAIL:
             return {  error: action.payload }
         default:
             return state
     }
 } 
+
+export const roomSearchReducer = (state = { propertyRooms: []}, action) => {
+    switch (action.type) {
+        case ROOM_SEARCH_REQUEST:
+            return { propertyRooms: []}
+        case ROOM_SEARCH_SUCCESS:
+            return { propertyRooms: action.payload}
+        case ROOM_SEARCH_FAIL:
+            return { error: action.payload}
+
+        default:
+            return state
+    }
+}

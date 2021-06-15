@@ -30,14 +30,18 @@ const useStyles = makeStyles((theme) => ({
       },
 }))
 
-export default function ListPlaces() {
+export default function ListPlaces({handleClose}) {
     const classes = useStyles()
+
+    const closeModal = () => {
+      handleClose()
+    }
 
   return (
   <>
         <div className={classes.neighborhoodFilter}>     
             <ul className={classes.leftAligned}>    
-            <Link to='/search/category=GuluCity&keyword=layibi'> 
+            <Link to='/search/category=GuluCity&keyword=layibi' onClick={closeModal}> 
                 <li className={classes.neighbourList}>   
                 <span>Layibi</span></li>  </Link> 
                 <Link to='/search/category=GuluCity&keyword=bardege' >
@@ -49,7 +53,7 @@ export default function ListPlaces() {
                     <li className={classes.neighbourList}> 
                 <span >Pece</span>     
                      </li>  </Link> 
-                <Link to='/search/category=GuluCity&keyword=laroo'>            
+                <Link to='/search/category=GuluCity&keyword=laroo' onClick={handleClose}>            
                     <li className={classes.neighbourList}> 
                 <span >Laroo</span> </li>   
                  </Link>   

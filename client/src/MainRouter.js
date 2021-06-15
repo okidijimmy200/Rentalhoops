@@ -13,7 +13,8 @@ import RentalProperty from './property/RentalProperty'
 import Property from './property/Property'
 import DetailProperty from './property/DetailProperty'
 import PropertySaved from './property/SavedProperty'
-import RoomSearch from './property/RoomSearch'
+import PriceSearch from './property/PriceSearch'
+import RoomSearch  from './property/RoomSearch'
 
 const MainRouter = () => {
     return (<div>
@@ -21,7 +22,8 @@ const MainRouter = () => {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route  exact path="/search/:keyword" component={Property} />
-        <Route exact path="/search/price/:query" component={RoomSearch} />
+        <Route exact path="/search/price/:query" component={PriceSearch} />
+        <Route exact path="/search/roomnumber/:roomNumber" component={RoomSearch} />
         <Route exact path="/rent" component={RentalProperty} />
         <Route path="/users" component={Users}/>
         <Route exact path='/signup' component={Signup} />

@@ -94,6 +94,7 @@ const Search = ({ history, handleClose }) =>  {
         if (keyword.trim() && values.category) {
             const keywordSearch = queryString.stringify({keyword, category: values.category})
             history.push(`/search/${keywordSearch}`)
+            handleClose()
         
         }
         else {

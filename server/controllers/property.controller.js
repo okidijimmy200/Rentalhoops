@@ -2,6 +2,7 @@ const Property = require('../models/property.model')
 const errorHandler = require('../helpers/dbErrorHandler')
 const formidable = require('formidable')
 const fs = require('fs')
+const { query } = require('express')
 
 // creating a form
 const create = (req, res, next) => {
@@ -162,6 +163,51 @@ const priceSearch = async (req, res) => {
     }
 }
 
+// search according to room number
+const roomSearch = async (req, res) => {
+    roomNumber = {}
+    if (req.query.roomNumber) {
+        roomNumber.bedRooms = req.query.roomNumber
+    }
+    try {
+        let property = await Property.find(roomNumber).populate('owner', '_id name').select('-imagePrimary -imageSecondary -imageTetiary').exec()
+        res.json(property)
+    } catch(err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+          })
+    }
+}
+
+//searching properties from list priced to highest priced
+const lowestPriceToHigh = async (req, res) => {
+    try {
+        let property = await Property.find()
+        .select('-imagePrimary -imageSecondary -imageTetiary')
+        .sort('price').exec()
+        res.json(property)
+    } catch(err){
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+  
+}
+
+// search according to newest property
+const newestProperty = async (req, res) => {
+    try {
+        let property = await Property.find()
+        .select('-imagePrimary -imageSecondary -imageTetiary')
+        .sort('-created').exec()
+        res.json(property)
+    } catch(err){
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+  
+}
  const listCategories = async (req, res) => {
      try {
          let property = await Property.distinct('category', {})
@@ -276,5 +322,8 @@ const priceSearch = async (req, res) => {
     listCategories,
     remove,
     favourite,
-    priceSearch
+    priceSearch,
+    roomSearch,
+    lowestPriceToHigh,
+    newestProperty
 }

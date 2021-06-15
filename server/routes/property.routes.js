@@ -29,9 +29,22 @@ router.route('/api/property/searchproperty')
     .get(propertyCtrl.searchProperty)
 
 
-//search property according to roomNumber
+//search property according to price
 router.route('/api/property/pricesearch')
     .get(propertyCtrl.priceSearch)
+
+// search property according to roomNumber
+router.route('/api/property/roomnumber')
+    .get(propertyCtrl.roomSearch)
+
+//search property according to lowest price to highest price
+router.route('/api/property/lowtohigh')
+    .get(propertyCtrl.lowestPriceToHigh)
+
+// sort according to newest property
+router.route('/api/property/newest')
+    .get(propertyCtrl.newestProperty)
+
 //router for searching according to categories
 router.route('/api/property/categories')
     .get(propertyCtrl.listCategories)

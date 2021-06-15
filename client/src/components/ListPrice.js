@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function ListPrice({history}) {
+export default function ListPrice({history, handleClose}) {
     const classes = useStyles()
     const [priceMin, setpriceMin] = useState('')
     const [priceMax, setpriceMax] = useState('')
@@ -52,41 +52,12 @@ export default function ListPrice({history}) {
       if (priceMin.trim() && priceMax.trim()) {
         const query = queryString.stringify({priceMax,priceMin })
           history.push(`/search/price/${query}`)
+          handleClose()
       }
       else {
           history.push('/')
       }
   }
-    // const [values, setValues] = useState({
-    //   priceMax: '',
-    //   priceMin: '',
-    //   results: [],
-    //   searched: false
-    // })
-
-    // const handleChange = name => event => {
-    //   setValues({
-    //     ...values, [name]: event.target.value,
-    //   })
-    //   console.log(event.target.value)
-    // }
-
-    // const search = (e) => {
-    //   e.preventDefault()
-    //   if(values.priceMin) {
-    //     searchPrice({
-    //       priceMin: values.priceMin || undefined, priceMax: values.priceMax
-    //     }).then((data) => {
-    //       if (data.error)  {
-    //         console.log(data.error)
-    //       } else {
-    //         setValues({...values, results: data, searched: true})
-    //         console.log(data)
-    //       }
-    //     }) 
-    //   }
-    // }
-
     return (
         <>
         <div className={classes.paper}>

@@ -2,10 +2,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { propertySearchReducer, roomSearchReducer } from './reducers/propertyReducer'
+import { propertySearchReducer, priceSearchReducer, roomSearchReducer } from './reducers/propertyReducer'
 
 const reducer = combineReducers({
     propertySearch: propertySearchReducer,
+    priceSearchList: priceSearchReducer,
     roomSearchList: roomSearchReducer
 })
 

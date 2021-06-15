@@ -49,7 +49,14 @@ const PropertySchema = new mongoose.Schema({
     owner:{
         type: mongoose.Schema.ObjectId, ref: 'User'
     },
-    views: {type: Number, default: 0}
+    views: {type: Number, default: 0},
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    updated: {
+        type: Date
+    }
 }
 )
 

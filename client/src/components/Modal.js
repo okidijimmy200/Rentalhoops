@@ -6,9 +6,10 @@ import Backdrop from '@material-ui/core/Backdrop';
 import TextField from '@material-ui/core/TextField';
 import { useSpring, animated } from 'react-spring';
 import MenuItem from '@material-ui/core/MenuItem'
-import Search from './Search'
+import ListSearch from './ListSearch'
 import ListPlaces from './ListPlaces'
 import ListPrice from './ListPrice'
+import ListRoom  from './ListRoom';
 import { Route} from 'react-router-dom'
 import './style.css'
 
@@ -38,42 +39,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#fff',
         zIndex: 11
       },
-      neighborhoodFilter: {
-          border:'none',
-          padding: 0
-      },
-      leftAligned: {
-        margin: '10px 0',
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignContent: 'left',
-        padding: 0,
-        listStyle: 'none'
-      },
-      neighbourList: {
-        height: '50px',
-        padding: '0 20px',
-        margin: 0,
-        fontFamily: 'OpenSans-regular,sans-serif',
-        fontSize: '14px',
-        lineHeight: '50px',
-        color: '#acacac',
-        textAlign: 'center',
-        verticalAlign: 'middle',
-        border: '1px solid #d4d4d4',
-        display: 'inline-block',
-        cursor:' pointer',
-        marginRight: '-1px',
-        marginTop: '-1px'
-      },
- 
-      filterMulti: {
-        margin: '10px 0',
-        display: 'flex',
-        flexWrap: 'wrap',
-        padding:' 0',
-        listStyle: 'none'
-      }
+     
 }))
 
 
@@ -128,43 +94,18 @@ export default function ModalFun(props) {
            <Fade >
            { props.open  && (
       <div className={classes.paper}>
-        <ListPlaces />
+        <ListPlaces handleClose={props.handleClose}/>
         </div>
                ) }
         {props.search &&(
-        <Route render={({history}) => <Search history={history}/>}/>
+        <Route render={({history}) => <ListSearch handleClose={props.handleClose} history={history}/>}/>
                     )}
             {props.price && (
               
-                 <Route render={({history}) => <ListPrice history={history}/>}/> 
-              
-                          
+                 <Route render={({history}) => <ListPrice  handleClose={props.handleClose} history={history}/>}/>      
                     )}
                     {props.bedrooms && (
-                      <div className={classes.paper}>
-                        <div className={classes.filterSection}>                   
-                             <h2>BEDROOMS</h2>                        
-                             <ul className={classes.filterMulti}>               
-                                          <li className={classes.neighbourList}>               
-                                      <span >Studio</span> 
-                                    </li> 
-                                <li className={classes.neighbourList}>
-                                  <span>1</span>    
-                              </li>    
-                              <a href='/search/2' >      
-                              <li className={classes.neighbourList}>        
-                                <span>2</span>  
-                                  </li>    </a>        
-                                  <li className={classes.neighbourList}>           
-                                    <span>3</span> </li>  
-                              <li className={classes.neighbourList}>  
-                                <span>4</span> 
-                            </li>     
-                            <li className={classes.neighbourList}>   
-                              <span >5+</span>            
-                              </li> </ul> 
-                        </div>
-                      </div>
+                       <Route render={({history}) => <ListRoom handleClose={props.handleClose} history={history}/>}/> 
                     )}
         </Fade>
        

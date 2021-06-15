@@ -5,7 +5,7 @@ import fakeMap from './../assets/images/fake-map2.jpg'
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card'
 import Skeleton from './skeleton'
-import { roomSearch } from '../store/actions/propertyActions'
+import { priceSearch } from '../store/actions/propertyActions'
 import {useDispatch, useSelector } from 'react-redux'
 import ImageCards from './ImageCards'
 import {SliderData} from '../components/SliderData'
@@ -52,20 +52,20 @@ const useStyles = makeStyles(theme => ({
       
 }))
 
-export default function RoomSearch({ match }) {
+export default function PriceSearch({ match }) {
     const classes = useStyles()
     // const [loading, setLoading] = useState(true)
 
     const dispatch = useDispatch()
 
-    const roomNumber = match.params.roomNumber
+    const query = match.params.query
 
-    const roomPrice = useSelector(state => state.roomSearchList)
-    const {propertyRooms, error} = roomPrice
+    const searchPrice = useSelector(state => state.priceSearchList)
+    const {propertyPrice, error} = searchPrice
 
     useEffect(() => {
-        dispatch(roomSearch(roomNumber))
-    }, [dispatch,roomNumber])
+        dispatch(priceSearch(query))
+    }, [dispatch, query ])
     return (
         <>
             <SearchNav />
@@ -74,7 +74,7 @@ export default function RoomSearch({ match }) {
                             <Grid item xs={12} sm={8} md={8} >
                                 {/* {loading  ? <Skeleton /> :  */}
                                         <Grid container spacing={0}>
-                                        {propertyRooms.map((property, i)=> {
+                                        {propertyPrice.map((property, i)=> {
                                             return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>            
                                                        <ImageCards property={property} slides={SliderData}/>
                                                     </Grid>
