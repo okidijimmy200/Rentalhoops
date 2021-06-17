@@ -3,6 +3,7 @@ const errorHandler = require('../helpers/dbErrorHandler')
 const formidable = require('formidable')
 const fs = require('fs')
 const { query } = require('express')
+const { extend } = require('lodash')
 
 // creating a form
 const create = (req, res, next) => {
@@ -232,6 +233,40 @@ const newestProperty = async (req, res) => {
      }
  }
 
+// update the property details
+const update = (req, res) => {
+    let form = new formidable.IncomingForm()
+    form.keepExtensions = true
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+            res.status(400).json({
+                message: "Photos could not be uploaded"
+            })
+        }
+        let property = req.property
+        property = extend(property, fields)
+        property.updated = Date.now()
+
+        if(files.imagePrimary && files.imageSecondary && files.imageTetiary) {
+            property.imagePrimary.data = fs.readFileSync(files.imagePrimary.path)
+            property.imagePrimary.contentType = files.imagePrimary.type
+
+            property.imageSecondary.data = fs.readFileSync(files.imageSecondary.path)
+            property.imageSecondary.contentType = files.imageSecondary.type
+
+            property.imageTetiary.data = fs.readFileSync(files.imageTetiary.path)
+            property.imageTetiary.contentType = files.imageTetiary.type
+        }
+        try {
+            let result = await property.save()
+            res.json(result)
+        } catch (err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        }
+    })
+}
  const like = async (req, res) => {
      try {
          let result = await Property.findByIdAndUpdate(req.body.propertyId, {$push: {likes: req.body.userId}}, {new: true})
@@ -325,5 +360,6 @@ const newestProperty = async (req, res) => {
     priceSearch,
     roomSearch,
     lowestPriceToHigh,
-    newestProperty
+    newestProperty,
+    update
 }

@@ -15,6 +15,7 @@ import DetailProperty from './property/DetailProperty'
 import PropertySaved from './property/SavedProperty'
 import PriceSearch from './property/PriceSearch'
 import RoomSearch  from './property/RoomSearch'
+import EditProperty from './property/EditProperty'
 
 const MainRouter = () => {
     return (<div>
@@ -31,6 +32,7 @@ const MainRouter = () => {
         <PrivateRoute exact path='/saved/:userId' component={PropertySaved}/>
         <Route exact path='/property/:propertyId' component={DetailProperty} />
         <PrivateRoute path='/landlord/upload' component={NewProduct} />
+        <PrivateRoute  path='/property/:userId/:propertyId/edit' component={EditProperty}/>
         <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
         <Route path="/user/:userId" component={Profile}/>
       </Switch>

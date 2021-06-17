@@ -32,6 +32,7 @@ export default function LandlordProperty({slides}) {
             } 
             else {
                 setProperty(data)
+                console.log(data)
             }
         })
         return function cleanup() {

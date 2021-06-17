@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import { SliderData } from './../components/SliderData'
 import {Link} from 'react-router-dom'
 
+
 const useStyles = makeStyles(theme => ({ 
     root: theme.mixins.gutters({
         maxWidth: 600,
@@ -208,7 +209,7 @@ export default function ImageCard( {slides , property}) {
       }
     return (
         <>
-          <Link to='/'>
+           <Link to={"/property/"+property.owner._id+"/" +property._id+"/edit"} style={{zIndex: -10, position: 'relative'}}>
                 <Paper className={classes.paper} component='div'>
                               <Card className={classes.card}>
                               {SliderData.map((slide, index) => {

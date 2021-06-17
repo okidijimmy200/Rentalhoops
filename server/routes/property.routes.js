@@ -60,7 +60,8 @@ router.route('/api/property/unlike')
 router.route('/api/property/favourite')
     .get(propertyCtrl.favourite)
 //delete property route
-router.route('/api/property/:propertyId')
+router.route('/api/property/:userId/:propertyId')
+    .put(authCtrl.requireSignin,  propertyCtrl.isOwner, propertyCtrl.update)
     .delete(authCtrl.requireSignin, propertyCtrl.isOwner, propertyCtrl.remove)
 
 //readpropertyviews controller

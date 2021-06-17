@@ -164,6 +164,23 @@ const searchPrice = async (params, signal) => {
     console.log(err)
   }
 }
+
+const update = async (params, credentials, property) => {
+  try {
+    let response = await fetch('/api/property/' + params.userId +'/'+params.propertyId, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: property
+    })
+    return await response.json()
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 export {
     create,
     listByLandlord,
@@ -175,5 +192,6 @@ export {
     favourite,
     readPropertyViews,
     SavedProperty,
-    searchPrice
+    searchPrice,
+    update
 }
