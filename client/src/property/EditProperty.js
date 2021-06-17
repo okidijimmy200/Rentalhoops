@@ -12,6 +12,8 @@ import {update, readPropertyViews} from './api-property'
 import auth from './../auth/auth-helper'
 import {Redirect} from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem'
+import {  Link } from 'react-router-dom'
+import DeleteProperty from './DeleteProperty'
 // import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 
@@ -73,6 +75,8 @@ export default function EditProperty({ match }) {
       redirect: false,
       error: '',
   })
+
+  const [property, setProperty] = useState([])
 // authentication
   const jwt = auth.isAuthenticated()
 
@@ -146,6 +150,13 @@ export default function EditProperty({ match }) {
         setValues({...values, 'redirect': true})
       }
     })
+  }
+
+  const removeProperty = (values) => {
+    const updatedProperty = [...values]
+    const index = updatedProperty.indexOf(values)
+    updatedProperty.splice(index, 1)
+    setValues(updatedProperty)
   }
 
     if (values.redirect) {
@@ -242,7 +253,13 @@ export default function EditProperty({ match }) {
         </CardContent>
         <CardActions>
           <Button style={{backgroundColor: 'rgb(186, 38, 93)'}} variant="contained" onClick={clickSubmit} className={classes.submit}>Update</Button>
-          {/* <Link to={'/seller/shop/edit/'+match.params.shopId} className={classes.submit}><Button variant="contained">Cancel</Button></Link> */}
+          <Link to={'/user/'+match.params.userId} className={classes.submit}><Button variant="contained">Cancel</Button></Link>
+          <DeleteProperty 
+          values={values}
+          userId={match.params.userId}
+          propertyId={match.params.propertyId}
+          onRemove={removeProperty}
+          />
         </CardActions>
       </Card>
     </div>)
