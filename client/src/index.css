@@ -1,0 +1,16 @@
+
+*,
+*::after,
+*::before {
+    /* update universal reset */
+    
+    margin: 0px;
+    padding: 0px;
+    /* box-sizing changes the box models so tht the borders and paddings are not added to total width and height*/
+    box-sizing: inherit;
+}
+
+body {
+    font-weight: 400;
+    box-sizing:border-box;
+}
