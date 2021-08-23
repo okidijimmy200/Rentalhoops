@@ -1,10 +1,11 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import chat from '../assets/images/chat.svg'
-import StarPic from '../assets/images/star.svg'
 import Card from '@material-ui/core/Card'
-import TickPic from '../assets/images/checked.svg'
+
+import chat from './../../assets/images/chat.svg'
+import StarPic from './../../assets/images/star.svg'
+import TickPic from './../../assets/images/checked.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {

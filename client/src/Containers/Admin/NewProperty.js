@@ -1,4 +1,5 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
+import {Redirect} from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -8,11 +9,11 @@ import FileUpload from '@material-ui/icons/AddPhotoAlternate'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
-import {create} from '../../property/api-property'
-import auth from '../../Auth/auth-helper'
-import {Redirect} from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem'
 // import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+
+import {create} from './../../Property/api-property'
+import auth from '../../Auth/auth-helper'
 
 
 const useStyles = makeStyles(theme => ({

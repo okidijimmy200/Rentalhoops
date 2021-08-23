@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { searchPrice } from '../../property/api-property'
+
 const queryString = require('query-string');
 
 const useStyles = makeStyles((theme) => ({

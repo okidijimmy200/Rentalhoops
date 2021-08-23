@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import Modal from '../Modal/Modal'
-import SearchIcon from './../assets/images/search.svg'
-import ExpandIcon from './../assets/images/expand.svg'
-import { makeStyles } from '@material-ui/core/styles'
 import {Link, useHistory } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+
+import SearchIcon from './../../assets/images/search.svg'
+import ExpandIcon from './../../assets/images/expand.svg'
+import Modal from '../Modal/Modal'
 import auth from '../../Auth/auth-helper'
 
 

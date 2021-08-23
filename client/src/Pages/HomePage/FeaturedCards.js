@@ -5,12 +5,12 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { SliderData } from '../../Components/SliderData/SliderData'
-import Test from '../../property/Test'
-import auth from '../../Auth/auth-helper'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import IconButton from '@material-ui/core/IconButton'
-import {   Redirect } from 'react-router-dom'
+
+import { SliderData } from '../../Components/SliderData/SliderData'
+import Test from './../../Property/Test'
+import auth from '../../Auth/auth-helper'
 
 const useStyles = makeStyles(theme => ({ 
     paper: {

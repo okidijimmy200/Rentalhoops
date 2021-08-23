@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import TextField from '@material-ui/core/TextField';
 import { useSpring, animated } from 'react-spring';
-import MenuItem from '@material-ui/core/MenuItem'
 import ListSearch from '../Tenants/ListSearch'
 import ListPlaces from '../Tenants/ListPlaces'
 import ListPrice from '../Tenants/ListPrice'

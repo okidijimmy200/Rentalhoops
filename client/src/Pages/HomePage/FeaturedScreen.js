@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Paper } from '@material-ui/core'
 import bgPic2 from '../assets/images/bgPic2.png'
 import Typography from '@material-ui/core/Typography'
-import Featured from './featured'
+
+import Featured from './Featured'
 
 const useStyles = makeStyles(theme => ({
   root: {

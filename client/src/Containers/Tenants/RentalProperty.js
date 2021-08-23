@@ -1,15 +1,17 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import fakeMap from '../assets/images/fake-map2.jpg'
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card'
-import { listAllProperties } from '../../property/api-property'
-import Skeleton from '../../property/skeleton'
+
+import fakeMap from './../../assets/images/fake-map2.jpg'
+import { listAllProperties } from './../../Property/api-property'
+import Skeleton from './../../Components/Skeleton/Skeleton'
 import ImageCards from '../../Components/Property/ImageCard/ImageCards'
 import {SliderData} from '../../Components/SliderData/SliderData'
-import SearchNav from '../../contents/SearchNav'
-import {Link} from 'react-router-dom'
+import SearchNav from './../../Components/SearchNav/SearchNav'
+
 
 const useStyles = makeStyles(theme => ({
     cardMap: {

@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import auth from '../../Auth/auth-helper'
-import { listByLandlord} from '../../property/api-property'
-import {Redirect} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
+
+import auth from '../../Auth/auth-helper'
+import { listByLandlord} from './../../Property/api-property'
 import ImageCard from '../../Components/Property/ImageCard/ImageCard'
 
 // styling the component

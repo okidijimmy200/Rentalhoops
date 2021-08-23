@@ -1,16 +1,17 @@
 import React from 'react'
+import {Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
-import bgImg from './../assets/images/bg.jpg'
 import { Paper } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
+
 import AppBarIntegration from './AppNav'
-import ObjectiveInfo from '../pages/objectiveInfo'
-import {Link } from 'react-router-dom'
+import ObjectiveInfo from './../Pages/HomePage/ObjectiveScreen'
 import dotsPic from './../assets/images/3dots.svg'
-import FeaturedList from '../pages/featuredList'
-import Testimonial from '../pages/testimonial'
-import QnA from './../pages/QnA'
-import Footer from '../contents/Footer/Footer'
+import FeaturedList from './../Pages/HomePage/ObjectiveScreen'
+import Testimonial from './../Pages/HomePage/TestimonialScreen'
+import bgImg from './../assets/images/bg.jpg'
+import QnA from './../Pages/HomePage/QnAScreen'
+import Footer from './../Components/Footer/Footer'
 
 const useStyles = makeStyles(theme => ({
   root: {

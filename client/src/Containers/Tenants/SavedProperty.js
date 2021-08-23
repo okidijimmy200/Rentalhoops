@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import fakeMap from '../assets/images/fake-map2.jpg'
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card'
-import { SavedProperty } from '../../property/api-property'
-import auth from '../../auth/auth-helper'
-import Skeleton from '../../property/skeleton'
+
+import fakeMap from './../../assets/images/fake-map2.jpg'
+import { SavedProperty } from './../../Property/api-property'
+import auth from './../../Auth/auth-helper'
 import ImageCards from '../../Components/Property/ImageCard/ImageCards'
 import {SliderData} from '../../Components/SliderData/SliderData'
-import SearchNav from '../../contents/SearchNav'
-// import jwt from 'express-jwt'
+import SearchNav from './../../Components/SearchNav/SearchNav'
 
 const useStyles = makeStyles(theme => ({
     

@@ -1,8 +1,6 @@
 import React, {useState,  useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { searchProperty, listCategories } from '../../property/api-property'
-import { Redirect } from 'react-router-dom'
-import Property from './../property/Property'
+import { searchProperty, listCategories } from './../../Property/api-property'
 const queryString = require('query-string');
 
 const useStyles = makeStyles(theme => ({

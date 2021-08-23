@@ -3,9 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography'
-import diamondPic from '../assets/images/diamond.jpg'
-import nodetree from '../assets/images/nodetree.jpg'
-import fingerprint from '../assets/images/fingerprint.jpg'
+
+import diamondPic from './../../assets/images/diamond.jpg'
+import nodetree from './../../assets/images/nodetree.jpg'
+import fingerprint from './../../assets/images/fingerprint.jpg'
 
 const styles = theme => ({
   root: {

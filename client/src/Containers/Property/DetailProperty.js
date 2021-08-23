@@ -1,6 +1,7 @@
 import React, {useState,useEffect } from 'react'
 import {makeStyles} from '@material-ui/core/styles'
-import {readPropertyViews} from '../../property/api-property'
+
+import {readPropertyViews} from './../../Property/api-property'
 import { SliderData } from '../../Components/SliderData/SliderData'
 import DetailLandlordProfile from '../../Components/Landlord/DetailLandlordProfile'
 import DetailListings from '../../Components/Tenants/DetailListings'

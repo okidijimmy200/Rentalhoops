@@ -1,6 +1,6 @@
 import React, {useState,  useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { searchProperty, listCategories } from '../../property/api-property'
+import { searchProperty, listCategories } from '../../Property/api-property'
 import { Redirect } from 'react-router-dom'
 import Property from '../../Containers/Tenants/Property'
 const queryString = require('query-string');

@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {create} from './../user/api-user'
+import {create} from './../User/api-user'
 
 
 const useForm = (validate) => {

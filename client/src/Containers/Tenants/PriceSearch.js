@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import fakeMap from '../assets/images/fake-map2.jpg'
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card'
-import Skeleton from '../../property/skeleton'
-import { priceSearch } from '../../store/actions/propertyActions'
-import {useDispatch, useSelector } from 'react-redux'
+
+import fakeMap from './../../assets/images/fake-map2.jpg'
+import { priceSearch } from './../../Store/actions/propertyActions'
 import ImageCards from '../../Components/Property/ImageCard/ImageCards'
 import {SliderData} from '../../Components/SliderData/SliderData'
-import SearchNav from '../../contents/SearchNav'
+import SearchNav from './../../Components/SearchNav/SearchNav'
 
 const useStyles = makeStyles(theme => ({
     cardMap: {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {Redirect, Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
@@ -13,13 +14,13 @@ import Typography from '@material-ui/core/Typography'
 import Edit from '@material-ui/icons/Edit'
 import Person from '@material-ui/icons/Person'
 import Divider from '@material-ui/core/Divider'
-import DeleteUser from './DeleteUser'
-import auth from './../auth/auth-helper'
+
+import auth from './../Auth/auth-helper'
 import {read} from './api-user.js'
-import {Redirect, Link} from 'react-router-dom'
-import LandlordProperty from './../property/LandlordProperty'
-import { listByLandlord} from './../property/api-property'
-import { SliderData } from '../components/SliderData'
+import LandlordProperty from './../Containers/Landlord/LandlordProperty'
+import { listByLandlord} from '../Property/api-property'
+import { SliderData } from './../Components/SliderData/SliderData'
+import DeleteUser from './DeleteUser'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
