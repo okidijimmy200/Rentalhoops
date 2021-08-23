@@ -10,7 +10,7 @@ import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 
 import auth from './../Auth/auth-helper'
-import {signin} from './../Auth/Signin'
+import {signin} from './../Auth/api-auth'
 import  GooglePlus from '../assets/images/svgs/googlePlus.svg'
 import Facebook from '../assets/images/svgs/facebook.svg'
 import Twitter from '../assets/images/svgs/twitter.svg'
