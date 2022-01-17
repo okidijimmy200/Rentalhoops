@@ -36,6 +36,15 @@ app.use('/', userRoutes)
 app.use('/', authRoutes)
 app.use('/', propertyRoutes)
 
+// const __dirname = path.resolve()
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(process.cwd(), 'client', 'build')))
+
+  app.get('*', (req, res) => res.sendFile(process.cwd(), 'client', 'build', 'index.html'))
+}
+
+
 // Catch unauthorised errors
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {

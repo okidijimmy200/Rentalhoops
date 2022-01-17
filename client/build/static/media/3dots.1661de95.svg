@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="56px" viewBox="0 0 55 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="27.4999 0 0 0 0 56 27.4999 56 54.9998 56 54.9998 0 27.4999 0"></polygon>
+    </defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+        <g id="Sell-1" transform="translate(-693.000000, -720.000000)">
+            <g id="Group-2" transform="translate(693.000000, 720.000000)">
+                <g id="Page-1">
+                    <g id="Group-3" transform="translate(0.000000, 0.000100)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M27.4998,0 C42.6638,0 54.9998,12.561 54.9998,28 C54.9998,43.439 42.6638,56 27.4998,56 C12.3358,56 -0.0002,43.439 -0.0002,28 C-0.0002,12.561 12.3358,0 27.4998,0" id="Fill-1" fill="#BA265D" mask="url(#mask-2)"></path>
+                    </g>
+                    <path d="M36.575,24.8028 C37.58,25.8088 37.58,27.4438 36.575,28.4488 C35.564,29.4588 33.935,29.4588 32.921,28.4488 C31.916,27.4448 31.916,25.8088 32.921,24.8028 C33.934,23.7908 35.564,23.7938 36.575,24.8028" id="Fill-4" fill="#FFFFFF"></path>
+                    <path d="M22.0789,24.8028 C23.0839,25.8088 23.0839,27.4438 22.0789,28.4488 C21.0679,29.4588 19.4379,29.4588 18.4249,28.4488 C17.4199,27.4448 17.4199,25.8088 18.4249,24.8028 C19.4379,23.7908 21.0679,23.7938 22.0789,24.8028" id="Fill-6" fill="#FFFFFF"></path>
+                    <path d="M29.3269,31.8028 C30.3319,32.8088 30.3319,34.4438 29.3269,35.4488 C28.3159,36.4588 26.6869,36.4588 25.6729,35.4488 C24.6679,34.4448 24.6679,32.8088 25.6729,31.8028 C26.6859,30.7908 28.3159,30.7938 29.3269,31.8028" id="Fill-8" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
