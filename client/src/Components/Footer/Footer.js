@@ -38,7 +38,7 @@ export default function Footer() {
                  </ul></div>   
         <div class="clearfix"></div>  
         </div>    <div id="legal" class="full-width">    
-        <p>Made with ♡ in Uganda | © RentalHoops. 2021. All Rights Reserved.</p>     
+        <p>Made with ♡ in Uganda | © RentalHoops. 2025. All Rights Reserved.</p>     
             <p><a href="/terms">Terms and Conditions</a> | <a href="/privacy">Privacy Policy</a> | <a href="/dmca">DMCA</a> | Search by <a href="https://locationiq.com" target="_blank">LocationIQ.com</a></p>    
              <p><a target="_blank" href="">Uganda Fair Housing Notice</a></p>        
                 </div>

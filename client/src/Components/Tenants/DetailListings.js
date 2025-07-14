@@ -140,7 +140,7 @@ export default function DetailListings({property}) {
                                 <li className={classes.indoorDetails}>                            
                                 <h3 className={classes.tetiary}>Family Number</h3>{property.familyNumber}</li> </ul>
                                 <ul className={classes.daysOnMarket}><li>                            
-                        <p>Date Available:<span className={classes.Date} >2021-12-05</span> </p></li></ul>
+                        <p>Date Available:<span className={classes.Date} >2025-12-05</span> </p></li></ul>
                     </div>                
                         <div className={classes.listingLinks}>
                          <button className={classes.dark}>Request Tour</button></div>           

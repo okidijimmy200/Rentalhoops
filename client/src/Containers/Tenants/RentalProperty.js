@@ -42,7 +42,7 @@ export default function RentalProperty(props) {
             } else {
                 setLoading(false)
                 setProperties(data)
-                setCount(data.length)
+                setCount(data ? data.length : ' ')
             }
             // const number = data.length
         })
@@ -59,7 +59,7 @@ export default function RentalProperty(props) {
                             <Grid item xs={12} sm={8} md={8} >
                                 {loading  ? <Skeleton /> : 
                                         <Grid container spacing={0}>
-                                        {properties.map((property, i) => {
+                                        {properties?.map((property, i) => {
                                             return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>
                                                 <Link to={"/property/"+property._id} style={{zIndex: -10, position: 'relative'}}>
                                                     <ImageCards property={property} slides={SliderData}/>
