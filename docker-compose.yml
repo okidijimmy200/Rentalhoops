@@ -58,7 +58,7 @@ services:
             context: ./nginx
             dockerfile: Dockerfile.nginx.dev
         ports:
-            - 8080:80
+            - 8880:80
         networks:
             - rentalhoops-api
 
