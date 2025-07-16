@@ -6,12 +6,12 @@ services:
         build: 
             context: .
             dockerfile: Dockerfile.server.dev
-        container_name: rentalhoops-nginx
+        container_name: rentalhoops-api
         volumes: 
             - /home/app/node_modules
             - .:/home/app
-        # ports: 
-        #     - 8080:8080
+        ports: 
+            - 8000:8000
         depends_on: 
             - mongodb
         environment: 
@@ -42,8 +42,8 @@ services:
         volumes: 
             - /home/app/node_modules
             - ./client:/home/app
-        # ports: 
-        #     - 3000:3000
+        ports: 
+            - 3000:3000
         depends_on: 
             - rentalhoops-api
         networks: 
