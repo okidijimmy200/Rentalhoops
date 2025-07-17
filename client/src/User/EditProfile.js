@@ -97,6 +97,10 @@ export default function EditProfile({ match }) {
   }
   const handleChange = name => event => {
     setValues({...values, [name]: event.target.value})
+
+    if (name == 'password') {
+      
+    }
   }
   const handleCheck = (event, checked) => {
     setValues({...values, 'landlord': checked})
@@ -113,7 +117,7 @@ export default function EditProfile({ match }) {
           </Typography>
           <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
           <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
-          <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
+          <TextField id="password" type="password" required label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
           <br/> <Typography variant="subtitle1" className={classes.subheading}>
             I am a landlord
           </Typography>

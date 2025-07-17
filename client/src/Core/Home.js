@@ -105,7 +105,6 @@ export default function Home(){
                 </div>
             </div>
         </Paper>
-        <ObjectiveInfo />
         <FeaturedList />
         <Testimonial />
         <QnA />

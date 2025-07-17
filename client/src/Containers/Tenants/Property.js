@@ -88,6 +88,7 @@ export default function Property({ match }) {
     useEffect(() => {
       dispatch(listSearch(keyword))
     }, [dispatch, keyword ])
+
     return (
         <>
         <SearchNav />

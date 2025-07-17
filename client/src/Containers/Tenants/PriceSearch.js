@@ -66,6 +66,7 @@ export default function PriceSearch({ match }) {
     useEffect(() => {
         dispatch(priceSearch(query))
     }, [dispatch, query ])
+           
     return (
         <>
             <SearchNav />
@@ -74,6 +75,7 @@ export default function PriceSearch({ match }) {
                             <Grid item xs={12} sm={8} md={8} >
                                 {/* {loading  ? <Skeleton /> :  */}
                                         <Grid container spacing={0}>
+                                            
                                         {propertyPrice.map((property, i)=> {
                                             return <Grid item xs={12} sm={6} md={6} style={{marginTop: '5px', marginBottom: '10px'}} key={i}>            
                                                        <ImageCards property={property} slides={SliderData}/>

@@ -5,7 +5,6 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { SliderData } from '../../SliderData/SliderData'
 import Test from '../../../Property/Test'
 import auth from '../../../Auth/auth-helper'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     paper: {
         // padding: theme.spacing(2),
         height: '355px',
-        width: '400px',
+        width: '320px',
         textAlign: 'center',
         color: theme.palette.text.secondary,
         display: 'flex',
@@ -54,7 +53,7 @@ const useStyles = makeStyles(theme => ({
         backgroundRepeat: 'no-repeat',
         position: 'absolute',
         top:' 0',
-        zIndex:' 0'
+        zIndex: 1
       },
       data: {
         padding: '14px 15px 20px 10px',
@@ -92,7 +91,8 @@ const useStyles = makeStyles(theme => ({
         height: '70%',
         position: 'absolute',
         left: '3px',
-        top: '2px'
+        top: '2px',
+        zIndex: 10, 
       },
       arrowWrap: {
         display: 'flex',
@@ -117,6 +117,7 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         top: '2px',
         right: '2px',
+        zIndex: 10,  
       },
       hood: {
         fontSize: '14px',
@@ -153,8 +154,7 @@ export default function ImageCards( {slides , property}) {
     
     const length = slides.length;
 
-    const nextSlide = (e) => {
-      e.preventDefault()
+    const nextSlide = () => {
         if (current ===  length -1 ) {
           setCurrent(0)
         }
@@ -163,23 +163,24 @@ export default function ImageCards( {slides , property}) {
         }
       }
   
-      const prevSlide = (e) => {
-        e.preventDefault()
+      const prevSlide = () => {
         setCurrent(current === 0 ? length - 1 : current - 1);
       }
   
       if (!Array.isArray(slides) || slides.length <= 0){
         return null
       }
+
     return (
         <>
-        <Paper className={classes.paper} component='div'>
+     
+              <Paper className={classes.paper} component='div'>
             <Card className={classes.card}>
-                {SliderData.map((slide, index) => {
+                {slides.map((slide, index) => {
                             return(
-                              <>
+                              <  >
                                 {index === current && (
-                                  <img className={classes.media} key={index} alt="pic" src={slide.image + property._id} />
+                                  <img key={index} className={classes.media} alt="pic" src={slide.image + property._id} />
                                 )}
                                  
                               </>
@@ -193,7 +194,7 @@ export default function ImageCards( {slides , property}) {
                         style={{display: 'block ',fill: 'rgb(255, 255, 255)',height: '24px',width: '24px'}}><path fillRule="evenodd" d="M13.703 16.293a1 1 0 1 1-1.415 1.414l-7.995-8a1 1 0 0 1 0-1.414l7.995-8a1 1 0 1 1 1.415 1.414L6.413 9l7.29 7.293z"></path> </svg>
                         </div>
                         </Button>
-                        <Button className={classes.arrowRight} disableRipple onClick={nextSlide}>
+                        <Button className={classes.arrowRight} onClick={nextSlide}>
                         <div className={classes.arrowWrap}>
                         <svg viewBox="0 0 18 18" role="img" alt='pic' aria-label="Next" focusable="false" style={{
                             display: 'block',
@@ -228,6 +229,7 @@ export default function ImageCards( {slides , property}) {
                             <Typography className={classes.price}>
                             Shs. {property.price}
                             </Typography>
+                            
                             <Typography component='div' className={classes.summary}>
                            {property.bedRooms} BD {property.bathRooms}BA  {property.familyNumber} FAMILY
                             </Typography>
